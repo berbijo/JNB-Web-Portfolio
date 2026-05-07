@@ -1,0 +1,26 @@
+
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <span class="navbar__brand" [class.visible]="showBrand()">
+      {{ owner.name }}
+    </span>
+
+    <button
+      class="hamburger ml-auto"
+      [class.open]="menuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+  <div class="nav-overlay h-[100svh]" [class.open]="menuOpen()">
+    <ul class="nav-overlay__links">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <button (click)="scrollTo(link.anchor)">{{ link.label }}</button>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>
