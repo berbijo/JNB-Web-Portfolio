@@ -1,7 +1,7 @@
 
 export const OWNER = {
   name: 'Joshua Berbie',
-  funBadge: "It's never Barbie bro",
+  funBadge: "It was never Barbie bro",
   title: 'Software Engineer',
   tagline: 'I build intuitive and future proof web applications.\nI can design too – hehe.',
   location: 'Batangas, Philippines',
@@ -13,7 +13,7 @@ export const OWNER = {
 
 export const BIO = {
   paragraph1:
-    "I'm a full-stack developer focused on building scalable, user-centered web applications using technologies like Spring Boot, and Angular. I work across the stack, from intuitive UI/UX design to reliable back end microservices.",
+    "I'm a full-stack developer focused on building scalable, user-centered web applications using technologies like Spring Boot and Angular. I work across the stack, from intuitive UI/UX design to reliable back end microservices.",
   paragraph1Highlights: ['Spring Boot', 'Angular', 'UI/UX design'],
   paragraph2:
     "I have experience in end-to-end development, including database management, cloud deployment, and Agile collaboration. I design solutions based on user feedback and ensure they align with real business needs.",
@@ -22,7 +22,7 @@ export const BIO = {
 
 export const TRAITS = [
   { word: 'Adaptive', highlight: false, description: 'A chameleon who delivers in fast-changing environments.' },
-  { word: 'Analytical', highlight: false, description: 'Turns complex problems into non-complex ones. Guessing is never a strategy.' },
+  { word: 'Analytical', highlight: false, description: 'Turns complex problems into non-complex ones because guessing is never a strategy.' },
   { word: 'Collaborative', highlight: false, description: 'Works seamlessly with teams. Make the job easier, collaborate.' },
   {
     word: 'Creative',
@@ -57,6 +57,7 @@ export interface AwardEntry {
   issuer: string;
   year: string;
   description?: string;
+  link?: string;
 }
 
 export interface TechCategory {
@@ -122,28 +123,11 @@ export const EXPERIENCE = {
 
   awards: [
     {
-      title: 'Data Analytics Essentials',
-      issuer: 'Cisco',
-      year: 'Nov 2023',
-      description: 'Completed foundational training in data analysis, visualization, and data-driven decision-making using industry-standard tools.',
-    },
-    {
       title: 'IT Specialist - Data Analytics',
       issuer: 'Certiport - A Pearson VUE Business',
       year: 'May 2024',
       description: 'Certified in data analytics concepts including data interpretation, visualization, and analytical tools for decision-making.',
-    },
-    {
-      title: 'IT Specialist - Databases',
-      issuer: 'Certiport - A Pearson VUE Business',
-      year: '2025',
-      description: 'Certified in database fundamentals including design, querying, and relational database management.',
-    },
-    {
-      title: 'IT Specialist - Databases',
-      issuer: 'Certiport - A Pearson VUE Business',
-      year: '2025',
-      description: 'Certified in database fundamentals including design, querying, and relational database management.',
+      link: 'https://www.credly.com/badges/f9f2ea12-090b-43d0-8e5e-c8c829cd902d/public_url',
     },
     {
       title: 'PhilNITS IT Passport',
@@ -156,6 +140,20 @@ export const EXPERIENCE = {
       issuer: 'DICT Philippines',
       year: 'Feb 2024',
       description: 'Completed web development bootcamp focused on modern web technologies and practices.',
+    },
+    {
+      title: 'IT Specialist - Databases',
+      issuer: 'Certiport - A Pearson VUE Business',
+      year: 'May 2023',
+      description: 'Certified in database fundamentals including design, querying, and relational database management.',
+      link: 'https://www.credly.com/badges/59f8ba42-f656-4089-a0b5-a0a776d0569a/public_url',
+    },
+    {
+      title: 'Data Analytics Essentials',
+      issuer: 'Cisco',
+      year: 'Nov 2023',
+      description: 'Completed foundational training in data analysis, visualization, and data-driven decision-making using industry-standard tools.',
+      link: 'https://www.credly.com/badges/f9f2ea12-090b-43d0-8e5e-c8c829cd902d/public_url',
     },
   ] as AwardEntry[],
 
@@ -178,7 +176,7 @@ export const EXPERIENCE = {
     },
     {
       category: 'Testing Frameworks',
-      items: ['Jasmine & Karma', 'Jasmine & Karma'],
+      items: ['Jasmine & Karma', 'JUnit & Mockito'],
     },
     {
       category: 'Tools & Design',

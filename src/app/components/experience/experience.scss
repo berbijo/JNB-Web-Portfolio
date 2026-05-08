@@ -1,0 +1,200 @@
+/* ── Experience ──────────────────────────────────────────────── */
+.experience {
+
+  min-height: 100svh;
+
+  &__heading {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Tab bar */
+  &__tabs {
+    display: flex;
+    gap: var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-md);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+    
+    .tab-item {
+      font-size: var(--text-lg);
+      font-weight: 700;
+    }
+  }
+
+  /* Content card */
+  &__card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-xs);
+    min-height: 680px !important;
+    height: max-content !important;
+  }
+
+  &__total {
+    text-align: right;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Timeline */
+  &__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+  }
+}
+
+/* ── Timeline entry ──────────────────────────────────────────── */
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: var(--space-lg);
+
+  &__dot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+  }
+
+  &__line {
+    flex: 1;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  &__content {
+    padding-bottom: var(--space-lg);
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+  }
+
+  &__role {
+    font-family: var(--font-cal-sans);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: 0.1em;
+  }
+
+  &__company {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  &__company-plain {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+  }
+
+  &__period {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__desc {
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  &__techs-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+}
+
+/* Awards / Certifications Grid */
+.experience__timeline--awards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+/* Make each card tighter */
+.timeline-entry--compact {
+  gap: var(--space-sm);
+}
+
+/* Reduce spacing between items */
+.experience__timeline--awards .timeline-entry {
+  margin-bottom: 0;
+  padding-bottom: var(--space-sm);
+}
+
+/* ── Tech category grid ──────────────────────────────────────── */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-2xl);
+}
+
+.tech-category {
+  &__name {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .experience {
+    &__tabs {
+      gap: var(--space-lg);
+    }
+
+    &__card {
+      padding: var(--space-lg);
+    }
+  }
+
+  .timeline-entry {
+    grid-template-columns: 16px 1fr;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 900px) {
+  .experience__timeline--awards {
+    grid-template-columns: 1fr;
+  }
+}
