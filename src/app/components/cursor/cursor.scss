@@ -1,0 +1,99 @@
+/* ── Custom Cursor ───────────────────────────────────────────── */
+
+/* Hide the real system cursor site-wide when this component is mounted.
+   Add this class to <html> from the component if you want to be safe,
+   or just keep it here — it applies globally via :host. */
+:host {
+  /* Force hide native cursor across the whole page */
+  * { cursor: none !important; }
+}
+
+/* Shared base — both elements are fixed, pointer-events:none,
+   translate-anchored at top-left, centered via negative margin.    */
+%cursor-base {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  will-change: transform;
+  /* translate() is set by JS, margin centers the element on the point */
+}
+
+/* ── Dot ─────────────────────────────────────────────────────── */
+.cursor-dot {
+  @extend %cursor-base;
+
+  $size: 8px;
+  width:  $size;
+  height: $size;
+  margin-top:  calc($size / -2);
+  margin-left: calc($size / -2);
+
+  background: var(--color-orange);
+  transition:
+    width     200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    height    200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 200ms ease,
+    opacity    200ms ease;
+
+  /* Clicking: squish */
+  &--clicking {
+    width:  5px;
+    height: 5px;
+    background: var(--color-text-primary);
+  }
+
+  /* Hovering a link/button: grow + hollow */
+  &--hovering {
+    width:  14px;
+    height: 14px;
+    background: var(--color-orange);
+    opacity: 0.6;
+  }
+}
+
+/* ── Ring ─────────────────────────────────────────────────────── */
+.cursor-ring {
+  @extend %cursor-base;
+
+  $size: 36px;
+  width:  $size;
+  height: $size;
+  margin-top:  calc($size / -2);
+  margin-left: calc($size / -2);
+
+  border: 1.5px solid var(--color-orange);
+  background: transparent;
+  opacity: 0.55;
+
+  transition:
+    width       350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    height      350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 250ms ease,
+    opacity     250ms ease;
+
+  /* Clicking: shrink ring tightly */
+  &--clicking {
+    width:  20px;
+    height: 20px;
+    opacity: 0.9;
+    border-color: var(--color-text-primary);
+  }
+
+  /* Hovering: ring expands and fills slightly */
+  &--hovering {
+    width:  52px;
+    height: 52px;
+    opacity: 0.25;
+    background: var(--color-orange);
+    border-color: transparent;
+  }
+}
+
+/* ── Mobile: just hide — touch screens have no cursor ─────────── */
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring { display: none; }
+}

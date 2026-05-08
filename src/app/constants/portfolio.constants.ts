@@ -22,7 +22,7 @@ export const BIO = {
 
 export const TRAITS = [
   { word: 'Adaptive', highlight: false, description: 'A chameleon who delivers in fast-changing environments.' },
-  { word: 'Analytical', highlight: false, description: 'Turns complex problems into non complex ones. Guessing is never a strategy.' },
+  { word: 'Analytical', highlight: false, description: 'Turns complex problems into non-complex ones. Guessing is never a strategy.' },
   { word: 'Collaborative', highlight: false, description: 'Works seamlessly with teams. Make the job easier, collaborate.' },
   {
     word: 'Creative',
@@ -98,7 +98,7 @@ export const EXPERIENCE = {
       duration: '4 months',
       durationHighlight: true,
       description:
-        "I completed IT bootcamps focused on industry practices and hands-on development, contributed to the application's UI/UX design, and transformed mockups into functional code integrated with backend microservices. I also collaborated with cross-functional teams to ensure smooth frontend and backend integration.",
+        "I completed IT bootcamps focused on industry practices and hands-on development, contributed to the application’s UI/UX design, and transformed mockups into functional code integrated with backend microservices. I also collaborated with cross-functional teams to ensure smooth frontend and backend integration.",
       techs: [
         'Springboot (Java)',
         'Angular (TypeScript)',
@@ -113,19 +113,49 @@ export const EXPERIENCE = {
 
   education: [
     {
-      degree: 'Bachelor of Science in Information Technology',
+      degree: 'Bachelor of Science in Information Technology Major in Business Analytics',
       school: 'Batangas State University',
       period: '2021 – 2025',
-      description: 'Graduated with academic distinction. Specialized in web and software development.',
+      description: 'Cum Laude graduate',
     },
   ] as EducationEntry[],
 
   awards: [
     {
-      title: 'Best Capstone Project',
-      issuer: 'Batangas State University',
+      title: 'Data Analytics Essentials',
+      issuer: 'Cisco',
+      year: 'Nov 2023',
+      description: 'Completed foundational training in data analysis, visualization, and data-driven decision-making using industry-standard tools.',
+    },
+    {
+      title: 'IT Specialist - Data Analytics',
+      issuer: 'Certiport - A Pearson VUE Business',
+      year: 'May 2024',
+      description: 'Certified in data analytics concepts including data interpretation, visualization, and analytical tools for decision-making.',
+    },
+    {
+      title: 'IT Specialist - Databases',
+      issuer: 'Certiport - A Pearson VUE Business',
       year: '2025',
-      description: 'Awarded for outstanding capstone project in the College of Informatics and Computing Sciences.',
+      description: 'Certified in database fundamentals including design, querying, and relational database management.',
+    },
+    {
+      title: 'IT Specialist - Databases',
+      issuer: 'Certiport - A Pearson VUE Business',
+      year: '2025',
+      description: 'Certified in database fundamentals including design, querying, and relational database management.',
+    },
+    {
+      title: 'PhilNITS IT Passport',
+      issuer: 'ITPEC',
+      year: 'Oct 2024',
+      description: 'IT fundamentals certification exam passer.',
+    },
+    {
+      title: 'Web Development Bootcamp',
+      issuer: 'DICT Philippines',
+      year: 'Feb 2024',
+      description: 'Completed web development bootcamp focused on modern web technologies and practices.',
     },
   ] as AwardEntry[],
 
@@ -147,8 +177,16 @@ export const EXPERIENCE = {
       items: ['Microsoft Azure', 'Docker', 'Git', 'RabbitMQ'],
     },
     {
+      category: 'Testing Frameworks',
+      items: ['Jasmine & Karma', 'Jasmine & Karma'],
+    },
+    {
       category: 'Tools & Design',
       items: ['Figma', 'Postman', 'SonarQube', 'Snyk', 'VS Code', 'IntelliJ IDEA'],
+    },
+    {
+      category: 'Productivity & AI',
+      items: ['Microsoft Office', 'Google Workspace', 'ChatGPT', 'Gemini AI', 'Claude AI', 'Deepseek AI'],
     },
   ] as TechCategory[],
 } as const;

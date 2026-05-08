@@ -1,0 +1,20 @@
+<!-- Custom cursor — sits fixed over everything -->
+@if (isVisible()) {
+  <!-- Dot: snappy, exact follower -->
+  <div
+    #dot
+    class="cursor-dot"
+    [class.cursor-dot--clicking]="isClicking()"
+    [class.cursor-dot--hovering]="isHovering()"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Ring: lagged, smooth follower -->
+  <div
+    #ring
+    class="cursor-ring"
+    [class.cursor-ring--clicking]="isClicking()"
+    [class.cursor-ring--hovering]="isHovering()"
+    aria-hidden="true"
+  ></div>
+}
