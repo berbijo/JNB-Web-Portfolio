@@ -1,0 +1,18 @@
+
+@if (isVisible()) {
+  <div
+    #dot
+    class="cursor-dot"
+    [class.cursor-dot--clicking]="isClicking()"
+    [class.cursor-dot--hovering]="isHovering()"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    #ring
+    class="cursor-ring"
+    [class.cursor-ring--clicking]="isClicking()"
+    [class.cursor-ring--hovering]="isHovering()"
+    aria-hidden="true"
+  ></div>
+}

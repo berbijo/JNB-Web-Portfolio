@@ -1,0 +1,44 @@
+
+<nav
+  class="navbar"
+  [class.scrolled]="isScrolled()"
+  [class.hidden]="navbarHidden()"
+>
+  <span class="navbar__brand">
+      <img [src]="'assets/jnb_logo.png'" alt="" srcset="">
+  </span>
+
+    <div class="btn__container">
+      <button (click)="openResume()" class="resume__btn">
+        Resume
+      </button>
+  
+      <button
+        class="hamburger ml-auto"
+        [class.open]="menuOpen()"
+        (click)="toggleMenu()"
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  <div class="nav-overlay" [class.open]="menuOpen()">
+
+    <div class="nav-menu-box">
+
+      <ul class="nav-overlay__links">
+        @for (link of navLinks; track link.label) {
+          <li>
+            <button (click)="scrollTo(link.anchor)">
+              {{ link.label }}
+            </button>
+          </li>
+        }
+      </ul>
+
+    </div>
+
+  </div>
+</nav>

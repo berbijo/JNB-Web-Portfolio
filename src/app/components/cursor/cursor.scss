@@ -1,0 +1,88 @@
+:host {
+  * {
+    cursor: none !important;
+  }
+}
+
+%cursor-base {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.cursor-dot {
+  @extend %cursor-base;
+
+  $size: 8px;
+  width: $size;
+  height: $size;
+  margin-top: calc($size / -2);
+  margin-left: calc($size / -2);
+
+  background: var(--color-orange);
+  transition:
+    width 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 200ms ease,
+    opacity 200ms ease;
+
+  &--clicking {
+    width: 5px;
+    height: 5px;
+    background: var(--color-text-primary);
+  }
+
+  &--hovering {
+    width: 14px;
+    height: 14px;
+    background: var(--color-orange);
+    opacity: 0.6;
+  }
+}
+
+.cursor-ring {
+  @extend %cursor-base;
+
+  $size: 36px;
+  width: $size;
+  height: $size;
+  margin-top: calc($size / -2);
+  margin-left: calc($size / -2);
+
+  border: 1.5px solid var(--color-orange);
+  background: transparent;
+  opacity: 0.55;
+
+  transition:
+    width 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 250ms ease,
+    opacity 250ms ease;
+
+  &--clicking {
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+    border-color: var(--color-text-primary);
+  }
+
+  &--hovering {
+    width: 52px;
+    height: 52px;
+    opacity: 0.25;
+    background: var(--color-orange);
+    border-color: transparent;
+  }
+}
+
+@media (pointer: coarse) {
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}

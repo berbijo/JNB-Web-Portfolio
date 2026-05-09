@@ -1,0 +1,54 @@
+<section id="projects" #projectsSection class="projects">
+
+  <div class="projects__layout">
+
+    <div class="projects__list">
+
+      <span #eyebrowRef class="projects__eyebrow section-title header">
+        Projects & Design
+      </span>
+
+      @for (project of projects; track project.id) {
+      <a #projectItem class="projects__item" [class.active]="activeProject().id === project.id"
+        (mouseenter)="selectProject(project)" [routerLink]="['/projects', project.id]">
+        <div class="projects__item-left">
+          <span class="projects__name">
+            {{ project.name }}
+          </span>
+          <p class="projects__description">
+            {{ project.description }}
+          </p>
+          <span class="projects__date">{{ project.developmentDate }}</span>
+        </div>
+      </a>
+      }
+
+    </div>
+
+    <div class="projects__preview">
+      <div class="projects__preview-card" [class.active]="activeProject()">
+
+        <img #previewImage class="projects__preview-image" [src]="activeProject().previewImage"
+          [alt]="activeProject().name" decoding="async" loading="eager" />
+
+        <div #previewOverlay class="projects__preview-overlay">
+          <span class="projects__preview-category">
+            {{ activeProject().category }}
+          </span>
+
+          <h3 class="projects__preview-title">
+            {{ activeProject().name }}
+          </h3>
+
+          <div class="projects__preview-tags">
+            @for (tech of activeProject().techStack; track tech) {
+            <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
