@@ -1,13 +1,12 @@
-/* ── Experience ──────────────────────────────────────────────── */
 .experience {
 
   min-height: 100svh;
+  padding-block-end: var(--space-3xl);
 
   &__heading {
     margin-bottom: var(--space-xl);
   }
 
-  /* Tab bar */
   &__tabs {
     display: flex;
     gap: var(--space-2xl);
@@ -16,15 +15,17 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    &::-webkit-scrollbar { display: none; }
-    
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     .tab-item {
       font-size: var(--text-lg);
       font-weight: 700;
     }
   }
 
-  /* Content card */
   &__card {
     background: var(--color-surface);
     border-radius: var(--radius-md);
@@ -41,7 +42,6 @@
     margin-bottom: var(--space-md);
   }
 
-  /* Timeline */
   &__timeline {
     display: flex;
     flex-direction: column;
@@ -49,7 +49,15 @@
   }
 }
 
-/* ── Timeline entry ──────────────────────────────────────────── */
+.timeline-entry__company {
+  transition: var(--transition-base);
+
+  &:hover {
+    color: var(--color-orange);
+    transform: scale(1.02);
+  }
+}
+
 .timeline-entry {
   display: grid;
   grid-template-columns: 20px 1fr;
@@ -133,25 +141,21 @@
   }
 }
 
-/* Awards / Certifications Grid */
 .experience__timeline--awards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
 }
 
-/* Make each card tighter */
 .timeline-entry--compact {
   gap: var(--space-sm);
 }
 
-/* Reduce spacing between items */
 .experience__timeline--awards .timeline-entry {
   margin-bottom: 0;
   padding-bottom: var(--space-sm);
 }
 
-/* ── Tech category grid ──────────────────────────────────────── */
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -175,7 +179,6 @@
   }
 }
 
-/* ── Mobile ──────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .experience {
     &__tabs {

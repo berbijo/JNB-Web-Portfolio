@@ -10,94 +10,113 @@
 
 :root {
   /* Colors */
-  --color-bg:            #f6f6f6;
-  --color-bg-alt:        #EDECE9;
-  --color-surface:       #FFFFFF;
-  --color-border:        #D8D6D2;
-  --color-border-light:  #E8E6E2;
+  --color-bg: #f6f6f6;
+  --color-bg-alt: #EDECE9;
+  --color-surface: #FFFFFF;
+  --color-border: #D8D6D2;
+  --color-border-light: #E8E6E2;
 
-  --color-text-primary:  #3B3B3B;
-  --color-text-secondary:#6B6B6B;
-  --color-text-muted:    #9B9B9B;
+  --color-text-primary: #3B3B3B;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: #9B9B9B;
 
-  --color-orange:        #E57C32;
-  --color-orange-light:  #F4A261;
-  --color-orange-pale:   #FFCFA0;
-  --color-orange-bg:     #FFF4EC;
+  --color-orange: #E57C32;
+  --color-orange-light: #F4A261;
+  --color-orange-pale: #FFCFA0;
+  --color-orange-bg: #FFF4EC;
 
   /* Gradients */
-  --gradient-orange:     linear-gradient(90deg, #f6f6f600 30%, #FFCFA0 60%, #E57C32 100%);
-  --gradient-blob:       radial-gradient(circle, #FFCFA0 0%, rgba(232, 124, 46, 0.3) 40%, transparent 70%);
+  --gradient-orange: linear-gradient(90deg, #f6f6f600 30%, #FFCFA0 60%, #E57C32 100%);
+  --gradient-blob: radial-gradient(circle, #FFCFA0 0%, rgba(232, 124, 46, 0.3) 40%, transparent 70%);
 
   /* Typography */
-  --font-cambay:   "Cambay", sans-serif;
+  --font-cambay: "Cambay", sans-serif;
   --font-cal-sans: 'Cal Sans', sans-serif;
 
-  --text-xs:     0.75rem;    /* 12px */
-  --text-sm:     0.875rem;   /* 14px */
-  --text-base:   1rem;       /* 16px */
-  --text-lg:     1.125rem;   /* 18px */
-  --text-xl:     1.25rem;    /* 20px */
-  --text-2xl:    1.5rem;     /* 24px */
-  --text-3xl:    1.875rem;   /* 30px */
-  --text-4xl:    2.25rem;    /* 36px */
-  --text-5xl:    3rem;       /* 48px */
-  --text-6xl:    3.75rem;    /* 60px */
-  --text-7xl:    4.5rem;     /* 72px */
-  --text-8xl:    6rem;       /* 96px */
-  --text-9xl:    8rem;       /* 128px */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+  --text-5xl: 3rem;
+  /* 48px */
+  --text-6xl: 3.75rem;
+  /* 60px */
+  --text-7xl: 4.5rem;
+  /* 72px */
+  --text-8xl: 6rem;
+  /* 96px */
+  --text-9xl: 8rem;
+  /* 128px */
 
   /* Spacing */
-  --space-xs:    0.25rem;
-  --space-sm:    0.5rem;
-  --space-md:    1rem;
-  --space-lg:    1.5rem;
-  --space-xl:    2rem;
-  --space-2xl:   3rem;
-  --space-3xl:   4rem;
-  --space-4xl:   6rem;
-  --space-5xl:   8rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
 
   /* Layout */
-  --max-width:   1200px;
-  --nav-height:  64px;
-  --section-px:  clamp(1.5rem, 5vw, 8rem);
-  --section-py:  clamp(4rem, 10vh, 8rem);
+  --max-width: 1200px;
+  --nav-height: 64px;
+  --section-px: clamp(1.5rem, 5vw, 8rem);
+  --section-py: clamp(4rem, 10vh, 8rem);
 
   /* Border radius */
-  --radius-sm:   0.25rem;
-  --radius-md:   0.5rem;
-  --radius-lg:   1rem;
-  --radius-xl:   1.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md:   0 4px 16px rgba(0,0,0,0.10);
-  --shadow-lg:   0 8px 32px rgba(0,0,0,0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
 
   /* Transitions */
-  --transition-fast:   150ms ease;
-  --transition-base:   250ms ease;
-  --transition-slow:   400ms ease;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
   --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Z-index layers */
-  --z-nav:     100;
+  --z-nav: 100;
   --z-overlay: 200;
-  --z-modal:   300;
+  --z-modal: 300;
 }
 
-/* ── Base Reset ────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html,
+body,
+* {
+  cursor: none !important;
+}
+
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -110,12 +129,10 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Reusable Component Classes ────────────────────────────── */
 
 
 @layer components {
-  
-  /* Container */
+
   .container-portfolio {
     width: 100 !important;
     margin-inline: auto !important;
@@ -123,28 +140,26 @@ body {
     padding-left: var(--section-px);
     padding-right: var(--section-px);
   }
-  
+
   /* Section base */
   .section-base {
     padding-top: var(--section-py);
     padding-bottom: var(--section-py);
   }
-  
-  /* Orange text */
+
   .text-orange {
     font-weight: 800 !important;
     color: var(--color-orange);
   }
-  
-  
+
+
   .header {
-      font-family: var(--font-cal-sans) !important;
-      font-size: var(--text-5xl) !important;
-      letter-spacing: 2px !important
-    }
-  
-  
-  /* Tag chip (tech tags) */
+    font-family: var(--font-cal-sans) !important;
+    font-size: var(--text-5xl) !important;
+    letter-spacing: 2px !important
+  }
+
+
   .tech-tag {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border;
     font-weight: 600;
@@ -160,14 +175,12 @@ body {
     }
   }
 
-  /* Divider */
   .divider {
     @apply w-full;
     height: 1px;
     background-color: var(--color-border);
   }
 
-  /* Section heading */
   .section-title {
     font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
     font-weight: 800;
@@ -176,20 +189,17 @@ body {
     line-height: 1.1;
   }
 
-  /* Body text */
   .body-text {
     font-size: var(--text-base);
     color: var(--color-text-primary);
     line-height: 1.75;
   }
 
-  /* Muted text */
   .text-muted {
     color: var(--color-text-muted);
     font-size: var(--text-sm);
   }
 
-  /* Underline tab */
   .tab-item {
     @apply relative pb-2 text-sm font-medium cursor-pointer transition-colors;
     color: var(--color-text-muted);
@@ -211,13 +221,11 @@ body {
     }
   }
 
-  /* Timeline dot */
   .timeline-dot {
     @apply w-3 h-3 rounded-full flex-shrink-0 mt-1.5;
     background: var(--color-orange);
   }
 
-  /* Timeline line */
   .timeline-line {
     @apply absolute top-4 bottom-0 left-1.5;
     width: 1px;
@@ -225,7 +233,6 @@ body {
     transform: translateX(-50%);
   }
 
-  /* Project list item */
   .project-item {
     @apply flex items-center gap-3 py-4 cursor-pointer border-b;
     border-color: var(--color-border-light);
@@ -234,7 +241,8 @@ body {
     color: var(--color-text-primary);
     transition: color var(--transition-fast);
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
       color: var(--color-text-primary);
     }
 
@@ -244,7 +252,7 @@ body {
         transform: translateX(2px);
       }
 
-      background: linear-gradient(90deg, rgba(232,124,46,0.15) 0%, transparent 80%);
+      background: linear-gradient(90deg, rgba(232, 124, 46, 0.15) 0%, transparent 80%);
       margin: 0 calc(-1 * var(--section-px));
       padding-left: var(--section-px);
       padding-right: var(--section-px);
@@ -257,7 +265,6 @@ body {
     color: var(--color-text-muted);
   }
 
-  /* Hamburger lines */
   .hamburger {
     @apply flex flex-col gap-1.5 cursor-pointer p-2;
 
@@ -270,17 +277,31 @@ body {
     &.open span:first-child {
       transform: translateY(8px) rotate(45deg);
     }
+
     &.open span:last-child {
       transform: translateY(-8px) rotate(-45deg);
     }
   }
 }
 
-/* ── Scrollbar ─────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: var(--radius-full); }
-::-webkit-scrollbar-thumb:hover { background: var(--color-orange-light); }
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-/* ── Selection ─────────────────────────────────────────────── */
-::selection { background: var(--color-orange-pale); color: var(--color-text-primary); }
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange-light);
+}
+
+::selection {
+  background: var(--color-orange-pale);
+  color: var(--color-text-primary);
+}

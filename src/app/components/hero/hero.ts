@@ -9,15 +9,12 @@ import {
   afterNextRender,
 } from '@angular/core';
 
-import {
-  isPlatformBrowser,
-  CommonModule
-} from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 
-import { OWNER, BIO }
-from '../../constants/portfolio.constants';
+import { OWNER, BIO } from '../../constants/portfolio.constants';
 
 import { gsap } from 'gsap';
+import { AnimationStateService } from '../../../animation-state.service';
 
 @Component({
   selector: 'app-hero',
@@ -27,7 +24,6 @@ import { gsap } from 'gsap';
   styleUrl: './hero.scss',
 })
 export class Hero implements OnDestroy {
-
   @ViewChild('heroSection')
   heroSection!: ElementRef<HTMLElement>;
 
@@ -43,14 +39,17 @@ export class Hero implements OnDestroy {
   @ViewChild('scrollIndicator')
   scrollIndicator!: ElementRef<HTMLElement>;
 
-  private ngZone     = inject(NgZone);
+  @ViewChild('heroLoader') heroLoader!: ElementRef<HTMLElement>;
+  @ViewChild('loaderText') loaderText!: ElementRef<HTMLElement>;
+  @ViewChild('loaderBar') loaderBar!: ElementRef<HTMLElement>;
+
+  private ngZone = inject(NgZone);
   private platformId = inject(PLATFORM_ID);
   private playPillAnimation!: () => void;
 
   owner = OWNER;
-  bio   = BIO;
+  bio = BIO;
 
-  /* ── Blob lerp state ───────────────────── */
   private mouseX = 0;
   private mouseY = 0;
 
@@ -58,57 +57,44 @@ export class Hero implements OnDestroy {
   private blobY = 0;
 
   private readonly LERP = 0.055;
+  private animState = inject(AnimationStateService);
 
   private rafId: number | null = null;
 
   private pillInterval: any;
 
-  /* mouse tracking */
   private mouseMoveHandler = (e: MouseEvent) => {
-
     this.mouseX = e.clientX;
     this.mouseY = e.clientY;
-
   };
 
   constructor() {
-
     afterNextRender(() => {
+      if (!isPlatformBrowser(this.platformId)) return;
 
-      if (!isPlatformBrowser(this.platformId))
-        return;
+      this.blobX = window.innerWidth / 2;
 
-      /* seed blob */
-      this.blobX =
-        window.innerWidth / 2;
-
-      this.blobY =
-        window.innerHeight / 2;
+      this.blobY = window.innerHeight / 2;
 
       this.mouseX = this.blobX;
       this.mouseY = this.blobY;
 
-      document.addEventListener(
-        'mousemove',
-        this.mouseMoveHandler
-      );
+      document.addEventListener('mousemove', this.mouseMoveHandler);
 
-      /* RAF outside Angular */
       this.ngZone.runOutsideAngular(() => {
-
         this.tick();
 
-        this.initAnimations();
-
+        if (this.animState.shouldPlayHero()) {
+          this.playIntroSequence();
+          this.animState.setHeroPlayed();
+        } else {
+          this.skipIntroState();
+        }
       });
-
     });
-
   }
 
-  /* ──────────────────────────────────────── */
   ngOnDestroy() {
-
     if (this.rafId !== null) {
       cancelAnimationFrame(this.rafId);
     }
@@ -118,83 +104,61 @@ export class Hero implements OnDestroy {
     }
 
     if (isPlatformBrowser(this.platformId)) {
-
-      document.removeEventListener(
-        'mousemove',
-        this.mouseMoveHandler
-      );
-
+      document.removeEventListener('mousemove', this.mouseMoveHandler);
     }
-
   }
 
-  /* ──────────────────────────────────────── */
-  private tick = () => {
+  private skipIntroState() {
+    gsap.set(this.heroLoader.nativeElement, { display: 'none' });
 
-    this.blobX +=
-      (this.mouseX - this.blobX)
-      * this.LERP;
-
-    this.blobY +=
-      (this.mouseY - this.blobY)
-      * this.LERP;
-
-    if (this.blob?.nativeElement) {
-
-      this.blob.nativeElement.style.left =
-        `${this.blobX}px`;
-
-      this.blob.nativeElement.style.top =
-        `${this.blobY}px`;
-
-    }
-
-    this.rafId =
-      requestAnimationFrame(this.tick);
-
-  };
-
-  /* ── Hero Intro Animation ─────────────── */
-  private initAnimations() {
-
-    const hero =
-      this.heroSection.nativeElement;
-
-    const left =
-      hero.querySelector('.hero__left');
-
-    const right =
-      hero.querySelector('.hero__right');
-
-    const title =
-      hero.querySelector('.hero__title');
-
-    const tagline =
-      hero.querySelector('.hero__tagline');
-
-    const location =
-      hero.querySelector('.hero__location');
-
-    const blob =
-      this.blob.nativeElement;
-
-    const scroll =
-      this.scrollIndicator.nativeElement;
-
-    /* initial states */
     gsap.set(
       [
-        left,
-        right,
-        title,
-        tagline,
-        location,
-        scroll,
+        this.blob.nativeElement,
+        this.heroSection.nativeElement.querySelectorAll('.hero__left, .hero__right'),
       ],
       {
-        opacity: 0,
-      }
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: 'none',
+      },
     );
+  }
+
+  private tick = () => {
+    this.blobX += (this.mouseX - this.blobX) * this.LERP;
+
+    this.blobY += (this.mouseY - this.blobY) * this.LERP;
+
+    if (this.blob?.nativeElement) {
+      this.blob.nativeElement.style.left = `${this.blobX}px`;
+
+      this.blob.nativeElement.style.top = `${this.blobY}px`;
+    }
+
+    this.rafId = requestAnimationFrame(this.tick);
+  };
+
+  private initAnimations() {
+    const hero = this.heroSection.nativeElement;
+
+    const left = hero.querySelector('.hero__left');
+
+    const right = hero.querySelector('.hero__right');
+
+    const title = hero.querySelector('.hero__title');
+
+    const tagline = hero.querySelector('.hero__tagline');
+
+    const location = hero.querySelector('.hero__location');
+
+    const blob = this.blob.nativeElement;
+
+    const scroll = this.scrollIndicator.nativeElement;
+
+    gsap.set([left, right, title, tagline, location, scroll], {
+      opacity: 0,
+    });
 
     gsap.set(left, {
       y: 40,
@@ -213,11 +177,10 @@ export class Hero implements OnDestroy {
       scale: 0.9,
     });
 
-    /* master timeline */
     const tl = gsap.timeline({
       defaults: {
         ease: 'power3.out',
-      }
+      },
     });
 
     tl.to(blob, {
@@ -226,59 +189,60 @@ export class Hero implements OnDestroy {
       duration: 1.2,
     })
 
-    .to(left, {
-      opacity: 1,
-      y: 0,
-      duration: 0.9,
-    }, '-=0.7')
+      .to(
+        left,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+        },
+        '-=0.7',
+      )
 
-    .to(
-      [title, tagline, location],
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.08,
-        duration: 0.6,
-      },
-      '-=0.45'
-    )
+      .to(
+        [title, tagline, location],
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.08,
+          duration: 0.6,
+        },
+        '-=0.45',
+      )
 
-    /* delayed right side */
-    .to(right, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-    }, '-=0.25')
+      .to(
+        right,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+        },
+        '-=0.25',
+      )
 
-    /* scroll reveal */
-    .to(scroll, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-    }, '-=0.45');
+      .to(
+        scroll,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        },
+        '-=0.45',
+      );
 
-    /* fun pill */
     this.animatePill();
 
-    const ownerName =
-      this.ownerName.nativeElement;
+    const ownerName = this.ownerName.nativeElement;
 
     ownerName.addEventListener('mouseenter', () => {
-
       this.playPillAnimation();
-
     });
-
   }
 
-  /* ── Playful Pill Animation ───────────── */
   private animatePill() {
-
-    const pill =
-      this.pill.nativeElement;
+    const pill = this.pill.nativeElement;
 
     this.playPillAnimation = () => {
-
       gsap.killTweensOf(pill);
 
       const tl = gsap.timeline();
@@ -320,28 +284,16 @@ export class Hero implements OnDestroy {
         duration: 0.8,
         ease: 'sine.inOut',
       });
-
     };
 
-    /* initial */
     this.playPillAnimation();
 
-    /* repeat */
-    this.pillInterval =
-      setInterval(() => {
-
-        this.playPillAnimation();
-
-      }, 10000);
-
+    this.pillInterval = setInterval(() => {
+      this.playPillAnimation();
+    }, 10000);
   }
 
-  /* ── Bio Highlight Parser ─────────────── */
-  parseParagraph(
-    text: string,
-    highlights: readonly string[]
-  ) {
-
+  parseParagraph(text: string, highlights: readonly string[]) {
     const parts: {
       text: string;
       highlight: boolean;
@@ -350,73 +302,140 @@ export class Hero implements OnDestroy {
     let remaining = text;
 
     while (remaining.length > 0) {
-
       const found = highlights
 
-        .map(h => ({
+        .map((h) => ({
           h,
-          idx: remaining.indexOf(h)
+          idx: remaining.indexOf(h),
         }))
 
-        .filter(x => x.idx !== -1)
+        .filter((x) => x.idx !== -1)
 
-        .sort((a, b) =>
-          a.idx - b.idx
-        )[0];
+        .sort((a, b) => a.idx - b.idx)[0];
 
       if (!found) {
-
         parts.push({
           text: remaining,
-          highlight: false
+          highlight: false,
         });
 
         break;
-
       }
 
       if (found.idx > 0) {
-
         parts.push({
           text: remaining.slice(0, found.idx),
-          highlight: false
+          highlight: false,
         });
-
       }
 
       parts.push({
         text: found.h,
-        highlight: true
+        highlight: true,
       });
 
-      remaining =
-        remaining.slice(
-          found.idx + found.h.length
-        );
-
+      remaining = remaining.slice(found.idx + found.h.length);
     }
 
     return parts;
-
   }
 
-  /* ─────────────────────────────────────── */
+  scrollTo(anchor: string) {
+    const el = document.querySelector(anchor);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   get bioParts1() {
-
-    return this.parseParagraph(
-      this.bio.paragraph1,
-      this.bio.paragraph1Highlights
-    );
-
+    return this.parseParagraph(this.bio.paragraph1, this.bio.paragraph1Highlights);
   }
 
   get bioParts2() {
-
-    return this.parseParagraph(
-      this.bio.paragraph2,
-      this.bio.paragraph2Highlights
-    );
-
+    return this.parseParagraph(this.bio.paragraph2, this.bio.paragraph2Highlights);
   }
 
+  private playIntroSequence() {
+    const loader = this.heroLoader.nativeElement;
+    const chars = this.loaderText.nativeElement.querySelectorAll('.char');
+    const bar = this.loaderBar.nativeElement;
+    const blob = this.blob.nativeElement;
+
+    const tl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      onComplete: () => {
+        loader.remove();
+        this.initAnimations();
+      },
+    });
+
+    tl.set(chars, {
+      opacity: 0,
+      y: 20,
+      scale: 0.8,
+      filter: 'blur(6px)',
+    });
+
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+      stagger: 0.12,
+      duration: 0.7,
+      ease: 'power2.out',
+    })
+
+      .to(chars, {
+        y: -2,
+        duration: 0.15,
+        yoyo: true,
+        repeat: 1,
+        stagger: 0.05,
+      })
+
+      .to(
+        bar,
+        {
+          width: '100%',
+          duration: 0.9,
+          ease: 'power2.inOut',
+        },
+        '-=0.4',
+      )
+
+      .to(chars, {
+        opacity: 0,
+        x: () => gsap.utils.random(-60, 60),
+        y: () => gsap.utils.random(-60, 60),
+        rotation: () => gsap.utils.random(-30, 30),
+        scale: 1.6,
+        filter: 'blur(10px)',
+        duration: 0.6,
+        stagger: 0.03,
+        ease: 'power4.out',
+      })
+
+      .to(chars, {
+        x: 0,
+        y: 0,
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.02,
+        ease: 'power3.in',
+      })
+
+      .set(blob, {
+        opacity: 0,
+        scale: 0.6,
+        filter: 'blur(25px)',
+      })
+
+      .to(blob, {
+        opacity: 1,
+        scale: 1,
+        filter: 'blur(15px)',
+        duration: 0.35,
+        ease: 'power2.out',
+      });
+  }
 }

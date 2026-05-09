@@ -1,41 +1,35 @@
-<!-- ── Traits / "I am" Section ─────────────────────────────────── -->
-<section id="traits" class="traits">
+<section #traitsSection id="traits" class="traits">
 
-  <!-- Label row -->
   <div class="traits__label-row">
     <div class="container-portfolio w-full mx-auto">
-      <span class="traits__label header">I am</span>
+      <span class="traits__label section-title header">I am</span>
     </div>
   </div>
 
-  <!-- Trait rows -->
   @for (trait of traits; track trait.word) {
-    <div
-      #traitRow
-      class="traits__row"
-    >
-      <div class="container-portfolio w-full mx-auto traits__row-inner">
+  <div #traitRow class="traits__row">
+    <div class="container-portfolio w-full mx-auto traits__row-inner">
 
-        <span #traitWord class="traits__word">
+      <span #traitWord class="traits__word">
 
-          @for (char of trait.word.split(''); track $index) {
+        @for (char of trait.word.split(''); track $index) {
 
-            <span class="traits__char">
-              {{ char === ' ' ? '\u00A0' : char }}
-            </span>
-
-          }
-
+        <span class="traits__char">
+          {{ char === ' ' ? '\u00A0' : char }}
         </span>
 
-        @if (trait.description) {
-          <span #traitDesc class="traits__description">
-            {{ trait.description }}
-          </span>
         }
 
-      </div>
+      </span>
+
+      @if (trait.description) {
+      <span #traitDesc class="traits__description">
+        {{ trait.description }}
+      </span>
+      }
+
     </div>
+  </div>
   }
 
 </section>

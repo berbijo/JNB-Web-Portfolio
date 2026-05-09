@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   &__layout {
     width: 85svw !important;
     display: grid;
@@ -11,8 +11,6 @@
     gap: 5rem;
     align-items: start;
   }
-
-  /* LEFT */
 
   &__list {
     display: flex;
@@ -31,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    cursor: pointer;
     padding: 1.3rem 0;
 
     border-top: 1px solid var(--color-border);
@@ -50,11 +48,9 @@
       padding-left: 1rem;
 
       background:
-        linear-gradient(
-          90deg,
-          rgba(229,124,50,0.10) 0%,
-          transparent 75%
-        );
+        linear-gradient(90deg,
+          rgba(229, 124, 50, 0.10) 0%,
+          transparent 75%);
 
       .projects__name {
         color: var(--color-orange);
@@ -74,11 +70,15 @@
     font-family: var(--font-cal-sans);
 
     font-size:
-      clamp(1.3rem, 2vw, 2rem);
+      clamp(1rem, 1.7vw, 1.7rem);
 
     transition:
       color .35s ease,
       transform .35s ease;
+  }
+
+  .projects__description {
+    font-size: var(--text-sm);
   }
 
   &__category {
@@ -89,9 +89,8 @@
     transition: transform .35s ease;
   }
 
-  /* RIGHT */
 
-   &__preview {
+  &__preview {
     position: sticky;
     top: 8rem;
 
@@ -116,10 +115,9 @@
     background: #ece9e4;
 
     box-shadow:
-      0 10px 40px rgba(0,0,0,.08);
+      0 10px 40px rgba(0, 0, 0, .08);
   }
 
-  /* ── IMAGE ───────────────────────────── */
 
   &__preview-image {
 
@@ -131,22 +129,20 @@
     object-fit: cover;
     object-position: center center;
 
-    transform: scale(1);
+    transform: translateZ(0) scale(1);
+    will-change: transform, opacity;
 
-    transition:
-      transform 1.8s cubic-bezier(.19,1,.22,1),
-      opacity .5s ease;
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    image-rendering: auto;
+
+    transition: none;
 
     animation:
-      previewFade .5s ease;
+      previewFade .3s ease;
   }
 
-  &__preview-card.active
-  &__preview-image {
-    transform: scale(1.06);
-  }
-
-  /* ── DARK OVERLAY ───────────────────── */
 
   &__preview-card::after {
 
@@ -156,20 +152,17 @@
     inset: 0;
 
     background:
-      linear-gradient(
-        to top,
-        rgba(0,0,0,.72) 0%,
-        rgba(0,0,0,.42) 30%,
-        rgba(0,0,0,.10) 60%,
-        rgba(0,0,0,.02) 100%
-      );
+      linear-gradient(to top,
+        rgba(0, 0, 0, .72) 0%,
+        rgba(0, 0, 0, .42) 30%,
+        rgba(0, 0, 0, .10) 60%,
+        rgba(0, 0, 0, .02) 100%);
 
     z-index: 1;
 
     pointer-events: none;
   }
 
-  /* ── OVERLAY CONTENT ────────────────── */
 
   &__preview-overlay {
 
@@ -212,6 +205,16 @@
     flex-wrap: wrap;
     gap: .5rem;
   }
+
+  .tech-tag {
+    border-color: white !important;
+    color: white !important;
+  }
+}
+
+.projects__date {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
 }
 
 @keyframes previewFade {
@@ -226,7 +229,6 @@
 
 }
 
-/* MOBILE */
 
 @media (max-width: 900px) {
 
