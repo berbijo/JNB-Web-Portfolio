@@ -99,14 +99,8 @@ export class Navbar implements OnInit, AfterViewInit {
       localStorage.getItem('theme') as
       'light' | 'dark' | null;
 
-    const prefersDark =
-      window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches;
-
     const initialTheme =
-      savedTheme ??
-      (prefersDark ? 'dark' : 'light');
+       savedTheme ?? 'light';
 
     this.applyTheme(initialTheme);
 

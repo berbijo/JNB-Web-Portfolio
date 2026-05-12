@@ -41,18 +41,7 @@
     letter-spacing: 0 !important;
     white-space: nowrap;
 
-    /* PROGRESSIVE SCALING */
-    @media (max-width: 1024px) {
-      font-size: clamp(2.75rem, 5.5vw, 4.5rem);
-    }
-
-    @media (max-width: 767px) {
-      font-size: clamp(2.25rem, 9vw, 3rem);
-    }
-
-    @media (max-width: 480px) {
-      font-size: clamp(2rem, 8vw, 2.5rem);
-    }
+   
 
     &--orange {
       color: var(--color-orange);
@@ -64,9 +53,6 @@
     margin: 0;
     padding: 0;
     line-height: 1;
-
-    will-change: transform;
-
     backface-visibility: hidden;
     transform-origin: center center;
   }
@@ -81,6 +67,22 @@
     opacity: 0;
     transform: translateX(-10px);
   }
+}
+
+.traits__word,
+.traits__char {
+  will-change: transform, color;
+}
+
+.traits__word {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.traits__row {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @media (max-width: 1400px) {
@@ -105,7 +107,7 @@
     }
 
     &__word {
-      font-size: clamp(2.2rem, 11vw, 3.6rem);
+      font-size: clamp(2.2rem, 8vw, 3.5rem);
       line-height: 1.05;
       white-space: normal;
     }
@@ -117,8 +119,6 @@
       padding-inline-start: var(--text-xs);
       color: var(--color-text-primary);
       line-height: 1.5;
-      opacity: 1;
-      transform: none;
     }
   }
 }

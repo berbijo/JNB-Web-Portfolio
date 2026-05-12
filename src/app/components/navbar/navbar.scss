@@ -175,27 +175,33 @@
   }
 }
 
-/* =========================================
-   HAMBURGER (MOBILE ONLY)
-   ========================================= */
+.sidebar-close {
+  position: absolute;
+
+  top: 1.5rem;
+  right: 1.5rem;
+
+  z-index: 10;
+}   
+
 
 .hamburger {
   background: none;
   border: none;
-
+  
   display: flex;
   flex-direction: column;
   gap: 6px;
-
+  
   cursor: pointer;
   padding: 8px;
-
-  z-index: 9999;
-
+  
+  
   span {
+    color: red !important;
     width: 24px;
     height: 1.5px;
-
+    
     background: var(--color-text-primary);
 
     transition:
@@ -270,8 +276,8 @@
   &__content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
-
     padding: 6rem 2rem;
   }
 
@@ -335,6 +341,12 @@
    RESPONSIVE RULES
    ========================================= */
 
+@media (max-width: 767px) {
+  .navbar {
+    height: 70px;
+  }
+}
+
 @media (max-width: 900px) {
   .navbar__links {
     display: none;
@@ -357,8 +369,4 @@
   img {
     width: 55px;
   }
-}
-
-.navbar__brand img {
-  
 }

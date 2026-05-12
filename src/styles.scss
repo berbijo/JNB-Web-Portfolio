@@ -197,7 +197,7 @@ html[data-theme="dark"] {
 
     /* Layout */
     --nav-height: 85px;
-    --section-px: clamp(1.25rem, 4vw, 4rem);
+    --section-px: clamp(1.75rem, 4vw, 4.5rem);
     --section-py: clamp(3rem, 8vh, 6rem);
   }
 }
@@ -233,7 +233,7 @@ html[data-theme="dark"] {
 
     /* Layout */
     --nav-height: 85px;
-    --section-px: clamp(1rem, 5vw, 1.5rem);
+    --section-px: clamp(1.5rem, 5vw, 2rem);
     --section-py: clamp(2.5rem, 6vh, 4rem);
   }
 }
@@ -254,7 +254,7 @@ html[data-theme="dark"] {
     --space-5xl: 4rem;     /* 64px */
 
     /* Layout */
-    --section-px: 1rem;
+    --section-px: 2rem;
     --section-py: 2rem;
   }
 }

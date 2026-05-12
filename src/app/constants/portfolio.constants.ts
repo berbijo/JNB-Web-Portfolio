@@ -47,6 +47,7 @@ export interface TechTag {
 }
 
 export interface WorkEntry {
+  id: string;
   role: string;
   company: string;
   companyLink?: string;
@@ -82,6 +83,7 @@ export const EXPERIENCE = {
 
   work: [
     {
+      id: 'nexus-fullstack',
       role: 'Full Stack Developer | UI/UX Designer',
       company: 'Nexus Elixir Solutions Corp.',
       companyLink: 'https://nexuselixir.com/',
@@ -106,6 +108,7 @@ export const EXPERIENCE = {
       ],
     },
     {
+      id: 'nexus-intern',
       role: 'Software Engineer Internship',
       company: 'Nexus Elixir Solutions Corp.',
       companyLink: 'https://nexuselixir.com/',

@@ -1,119 +1,185 @@
 <section id="experience" #expSection class="experience container-portfolio">
   <h2 #expHeading class="section-title">Experience</h2>
 
-    <nav #expTabs class="experience__tabs" aria-label="Experience categories">
-      @for (tab of tabs; track tab.id) {
-      <button class="tab-item" [class.active]="activeTab() === tab.id" (click)="setTab(tab.id)">
+  <nav #expTabs class="experience__tabs" aria-label="Experience categories">
+    @for (tab of tabs; track tab.id) {
+      <button
+        class="tab-item"
+        [class.active]="activeTab() === tab.id"
+        (click)="setTab(tab.id)"
+      >
         {{ tab.label }}
       </button>
-      }
-    </nav>
+    }
+  </nav>
 
-    <div #expCard class="experience__card">
+  <div #expCard class="experience__card">
 
-      @if (activeTab() === 'work') {
+    @if (activeTab() === 'work') {
       <div class="experience__total">{{ exp.totalExperience }}</div>
 
       <div class="experience__timeline">
-        @for (job of exp.work; track job.role; let isLast = $last) {
 
-        <div class="timeline-entry">
+        @for (job of exp.work; track job.id; let isLast = $last) {
 
-          <div class="timeline-entry__dot-col">
-            <span class="timeline-dot"></span>
-            @if (!isLast) {
-            <span class="timeline-entry__line"></span>
-            }
-          </div>
+          <div class="timeline-entry">
 
-          <div class="timeline-entry__content">
-            <div class="timeline-entry__header">
-              <span class="timeline-entry__role">{{ job.role }}</span>
-              <a [href]="job.companyLink" target="_blank" rel="noopener noreferrer" class="timeline-entry__company">
-                &bull; {{ job.company }}
-              </a>
+            <div class="timeline-entry__dot-col">
+              <span class="timeline-dot"></span>
+              @if (!isLast) {
+                <span class="timeline-entry__line"></span>
+              }
             </div>
 
-            <p class="timeline-entry__period">
-              {{ job.period }}
-              <span class="text-orange ml-1">| ({{ job.duration }})</span>
-            </p>
+            <div class="timeline-entry__content">
 
-            <p class="timeline-entry__desc">{{ job.description }}</p>
+              <div class="timeline-entry__header">
+                <span class="timeline-entry__role">{{ job.role }}</span>
 
-            <p class="timeline-entry__techs-label">techs I've tinkered with :</p>
+                <a
+                  [href]="job.companyLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="timeline-entry__company"
+                >
+                  &bull; {{ job.company }}
+                </a>
+              </div>
 
-            <div class="timeline-entry__tags">
-              @for (tech of job.techs; track tech) {
-              <span class="tech-tag">{{ tech }}</span>
+              <p class="timeline-entry__period">
+                {{ job.period }}
+                <span class="text-orange ml-1">| ({{ job.duration }})</span>
+              </p>
+
+              <p class="timeline-entry__desc">
+                {{ job.description }}
+              </p>
+
+              <!-- TECH HEADER WITH CHEVRON -->
+              <div class="tech-header">
+                <p class="timeline-entry__techs-label">
+                  techs I've tinkered with
+                </p>
+
+                <button
+                  class="tech-chevron"
+                  type="button"
+                  (click)="toggleTech(job.id)"
+                  aria-label="Toggle skills"
+                >
+                  <span
+                    class="chevron"
+                    [class.open]="isTechExpanded(job.id)"
+                  >
+                    ▼
+                  </span>
+                </button>
+              </div>
+
+              <!-- GSAP TARGET -->
+              <div
+                class="timeline-entry__tags"
+                [attr.data-id]="job.id"
+              >
+                @for (tech of job.techs; track tech) {
+                  <span class="tech-tag">{{ tech }}</span>
+                }
+              </div>
+
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'education') {
+      <div class="experience__timeline">
+        @for (edu of exp.education; track edu.degree) {
+          <div class="timeline-entry">
+
+            <div class="timeline-entry__dot-col">
+              <span class="timeline-dot"></span>
+            </div>
+
+            <div class="timeline-entry__content">
+              <div class="timeline-entry__header">
+                <span class="timeline-entry__role">{{ edu.degree }}</span>
+              </div>
+
+              <p class="timeline-entry__company-plain">
+                {{ edu.school }}
+              </p>
+
+              <p class="timeline-entry__period">
+                {{ edu.period }}
+              </p>
+
+              @if (edu.description) {
+                <p class="timeline-entry__desc">
+                  {{ edu.description }}
+                </p>
               }
             </div>
           </div>
-
-        </div>
         }
       </div>
-      }
+    }
 
-      @if (activeTab() === 'education') {
-      <div class="experience__timeline">
-        @for (edu of exp.education; track edu.degree) {
-        <div class="timeline-entry">
-          <div class="timeline-entry__dot-col">
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-entry__content">
-            <div class="timeline-entry__header">
-              <span class="timeline-entry__role">{{ edu.degree }}</span>
-            </div>
-            <p class="timeline-entry__company-plain">{{ edu.school }}</p>
-            <p class="timeline-entry__period">{{ edu.period }}</p>
-            @if (edu.description) {
-            <p class="timeline-entry__desc">{{ edu.description }}</p>
-            }
-          </div>
-        </div>
-        }
-      </div>
-      }
-
-      @if (activeTab() === 'awards') {
+    @if (activeTab() === 'awards') {
       <div class="experience__timeline experience__timeline--awards">
         @for (award of exp.awards; track award.title) {
-        <div class="timeline-entry timeline-entry--compact">
-          <div class="timeline-entry__dot-col">
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-entry__content">
-            <div class="timeline-entry__header">
-              <span class="timeline-entry__role">{{ award.title }}</span>
+          <div class="timeline-entry timeline-entry--compact">
+
+            <div class="timeline-entry__dot-col">
+              <span class="timeline-dot"></span>
             </div>
-            <p class="timeline-entry__company-plain">
-              {{ award.issuer }} • {{ award.year }}
-            </p>
-            @if (award.description) {
-            <p class="timeline-entry__desc">{{ award.description }}</p>
-            }
+
+            <div class="timeline-entry__content">
+              <div class="timeline-entry__header">
+                <span class="timeline-entry__role">{{ award.title }}</span>
+              </div>
+
+              <p class="timeline-entry__company-plain">
+                {{ award.issuer }} • {{ award.year }}
+              </p>
+
+              @if (award.description) {
+                <p class="timeline-entry__desc">
+                  {{ award.description }}
+                </p>
+              }
+
+              @if (award.link) {
+                <a
+                  class="award-link"
+                  target="_blank"
+                  rel="noopener"
+                  [href]="award.link"
+                >
+                  Certificate <i class="fa-solid fa-link"></i>
+                </a>
+              }
+            </div>
           </div>
-        </div>
         }
       </div>
-      }
+    }
 
-      @if (activeTab() === 'technologies') {
+    @if (activeTab() === 'technologies') {
       <div class="tech-grid">
         @for (cat of exp.technologies; track cat.category) {
-        <div class="tech-category">
-          <h4 class="tech-category__name">{{ cat.category }}</h4>
-          <div class="tech-category__tags">
-            @for (item of cat.items; track item) {
-            <span class="tech-tag">{{ item }}</span>
-            }
+          <div class="tech-category">
+            <h4 class="tech-category__name">{{ cat.category }}</h4>
+
+            <div class="tech-category__tags">
+              @for (item of cat.items; track item) {
+                <span class="tech-tag">{{ item }}</span>
+              }
+            </div>
           </div>
-        </div>
         }
       </div>
-      }
+    }
 
-    </div>
+  </div>
 </section>

@@ -1,8 +1,8 @@
 <section id="projects" #projectsSection class="projects">
   <div class="projects__layout">
     <div class="projects__list">
-      <span #eyebrowRef class="projects__eyebrow section-title header">
-        Projects & Design
+      <span #eyebrowRef class="projects__eyebrow">
+        Projects & Designs
       </span>
       @for (project of projects; track project.id) {
       <a #projectItem class="projects__item" [class.active]="activeProject().id === project.id"

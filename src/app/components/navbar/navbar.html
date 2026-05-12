@@ -64,6 +64,15 @@
 <!-- SIDEBAR -->
 <aside class="nav-sidebar" [class.open]="menuOpen()">
 
+   <button
+      class="hamburger sidebar-close"
+      [class.open]="menuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
   <div class="nav-sidebar__content">
 
     @for (link of navLinks; track link.label) {
