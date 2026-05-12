@@ -6,10 +6,11 @@ export function createLenis(platformId: Object) {
     if (!isPlatformBrowser(platformId)) return;
 
     const lenis = new Lenis({
-      duration: 2,
+      duration: 1.4,
       smoothWheel: true,
-      wheelMultiplier: 1,
     });
+
+    (window as any).lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);

@@ -1,5 +1,7 @@
 .hire-me {
   position: relative;
+  width: 100svw !important;
+  padding-inline: var(--section-px) !important;
 
   overflow: hidden;
 
@@ -14,8 +16,6 @@
     );
 
   &__content {
-    max-width: 760px;
-
     margin-inline: auto;
 
     text-align: center;
@@ -129,7 +129,7 @@
     }
 
     &__cta {
-      width: 100%;
+      width: 70%;
     }
 
   }

@@ -263,25 +263,25 @@
   padding: 0.75rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgb(from var(--color-surface) r g b / 0.7);
   backdrop-filter: blur(10px);
   color: var(--color-text-secondary);
   cursor: pointer;
-
+  
   transition:
-    transform .25s ease,
-    border-color .25s ease,
-    color .25s ease,
-    background .25s ease;
-
+  transform .25s ease,
+  border-color .25s ease,
+  color .25s ease,
+  background .25s ease;
+  
   svg {
     transition: transform .25s ease;
   }
-
+  
   &:hover {
     color: var(--color-orange);
     border-color: var(--color-orange);
-    background: rgba(255, 255, 255, 0.92);
+    background: rgb(from var(--color-surface) r g b / 0.92);
     transform: translateY(-2px);
 
     svg {
@@ -323,6 +323,18 @@
 }
 
 @media (max-width: 768px) {
+
+  .detail__carousel-btn {
+    width: var(--text-3xl);
+    height: var(--text-3xl);
+  }
+
+  .detail__content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--space-5xl);
+    margin-top: calc(-1 * var(--space-5xl));
+  }
   .detail {
     grid-template-columns: 1fr;
 

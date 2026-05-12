@@ -1,27 +1,28 @@
 .projects {
-  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100svh !important;
+  padding-block: var(--section-py) !important;
+  padding-inline: var(--section-px) !important;
 
   &__layout {
-    width: 85svw !important;
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(2rem, 4vw, 5rem);
     align-items: start;
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
+    padding-top: clamp(1rem, 2vw, 2rem);
+    min-width: 0;
   }
 
   &__eyebrow {
     font-family: var(--font-cal-sans);
     font-size: var(--text-4xl);
-
     margin-bottom: 2rem;
   }
 
@@ -31,26 +32,35 @@
     justify-content: space-between;
     cursor: pointer;
     padding: 1.3rem 0;
-
     border-top: 1px solid var(--color-border);
-
     text-decoration: none;
-
     position: relative;
+    transition: background .35s ease;
 
-    transition:
-      padding .35s ease,
-      background .35s ease;
+    // Create space for the hover effect without shifting layout
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      background: linear-gradient(90deg,
+        rgba(229, 124, 50, 0.10) 0%,
+        transparent 75%);
+      transition: width .35s ease;
+      pointer-events: none;
+    }
 
     &:hover,
     &.active {
+      &::before {
+        width: 100%;
+      }
 
-      padding-left: 1rem;
-
-      background:
-        linear-gradient(90deg,
-          rgba(229, 124, 50, 0.10) 0%,
-          transparent 75%);
+      .projects__item-left {
+        transform: translateX(1rem);
+      }
 
       .projects__name {
         color: var(--color-orange);
@@ -66,37 +76,38 @@
     }
   }
 
-  &__name {
-    font-family: var(--font-cal-sans);
-
-    font-size:
-      clamp(1rem, 1.7vw, 1.7rem);
-
-    transition:
-      color .35s ease,
-      transform .35s ease;
+  &__item-left {
+    flex: 1;
+    min-width: 0;
+    transition: transform .35s ease;
   }
 
-  .projects__description {
+  &__item-preview {
+    display: none;
+  }
+
+  &__name {
+    font-family: var(--font-cal-sans);
+    font-size: clamp(1rem, 1.7vw, 1.7rem);
+    transition: color .35s ease;
+  }
+
+  &__description {
     font-size: var(--text-sm);
+    margin-top: 0.5rem;
   }
 
   &__category {
     font-size: var(--text-sm);
-
     color: var(--color-text-secondary);
-
     transition: transform .35s ease;
   }
-
 
   &__preview {
     position: sticky;
     top: 8rem;
-
-    height: 75vh;
     aspect-ratio: 1/1 !important;
-
+    height: clamp(420px, 70vh, 760px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,80 +116,51 @@
   &__preview-card {
     width: 100%;
     height: 100%;
-
     position: relative;
-
     overflow: hidden;
-
-    border-radius: 1.5rem;
-
     background: #ece9e4;
-
-    box-shadow:
-      0 10px 40px rgba(0, 0, 0, .08);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
   }
-
 
   &__preview-image {
-
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
     object-position: center center;
-
     transform: translateZ(0) scale(1);
     will-change: transform, opacity;
-
     backface-visibility: hidden;
     perspective: 1000px;
-
     image-rendering: auto;
-
     transition: none;
-
-    animation:
-      previewFade .3s ease;
+    animation: previewFade .3s ease;
   }
 
-
   &__preview-card::after {
-
     content: '';
-
     position: absolute;
     inset: 0;
-
     background:
       linear-gradient(to top,
         rgba(0, 0, 0, .72) 0%,
         rgba(0, 0, 0, .42) 30%,
         rgba(0, 0, 0, .10) 60%,
         rgba(0, 0, 0, .02) 100%);
-
     z-index: 1;
-
     pointer-events: none;
   }
 
-
   &__preview-overlay {
-
     position: absolute;
-
-    left: 2rem;
-    bottom: 2rem;
-
+    left: clamp(1rem, 2vw, 2rem);
+    bottom: clamp(1rem, 2vw, 2rem);
     z-index: 2;
-
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
     max-width: 75%;
-
     color: white;
   }
 
@@ -191,12 +173,8 @@
 
   &__preview-title {
     font-family: var(--font-cal-sans);
-
-    font-size:
-      clamp(2rem, 4vw, 4rem);
-
+    font-size: clamp(2rem, 3.5vw, 4rem);
     line-height: 1;
-
     letter-spacing: -.03em;
   }
 
@@ -215,36 +193,199 @@
 .projects__date {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
+  margin-top: 0.25rem;
 }
 
 @keyframes previewFade {
-
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
-
 }
 
-
-@media (max-width: 900px) {
-
+/* =========================================
+   BELOW 1650px - SINGLE COLUMN
+   ========================================= */
+@media (max-width: 1650px) {
   .projects {
-
+    width: 100svw;
+    
     &__layout {
       grid-template-columns: 1fr;
+      gap: 0;
     }
-
+    
+    &__list {
+      padding-top: 0;
+    }
+    
+    &__item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: clamp(1rem, 2vw, 2rem);
+      align-items: start;
+      padding: 1.5rem 0;
+      
+      // Remove the ::before pseudo-element effect on smaller screens
+      &::before {
+        display: none;
+      }
+      
+      &:hover,
+      &.active {
+        .projects__item-left {
+          transform: none;
+        }
+        
+        .projects__item-preview {
+          transform: scale(1.02);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
+        }
+      }
+    }
+    
+    &__item-preview {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ece9e4;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+      transition: all .35s ease;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+    
+    &__item-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
     &__preview {
-      height: 50vh;
-      position: relative;
-      top: auto;
-      order: -1;
+      display: none;
+    }
+    
+    &__name {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+    }
+    
+    &__description {
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+  }
+}
+
+/* =========================================
+   LARGE TABLET / SMALL DESKTOP
+   ========================================= */
+@media (max-width: 1200px) {
+  .projects {
+    width: 100svw;
+    
+    &__item {
+      grid-template-columns: 160px 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+    }
+    
+    &__name {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+    }
+  }
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+@media (max-width: 1024px) {
+  .projects {
+    width: 100svw;
+    
+    &__item {
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    
+    &__eyebrow {
+      font-size: var(--text-3xl);
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+@media (max-width: 768px) {
+  .projects {
+    width: 100svw !important;
+    padding-block: calc(var(--section-py) * 0.7);
+
+    &__item {
+      grid-template-columns: 120px 1fr;
+      gap: 0.875rem;
+      padding: 1rem 0;
     }
 
-  }
+    &__item-preview {
+      aspect-ratio: 1 / 1;
+    }
 
+    &__eyebrow {
+      font-size: var(--text-2xl);
+      margin-bottom: 1rem;
+    }
+
+    &__name {
+      font-size: clamp(0.95rem, 4vw, 1.1rem);
+    }
+
+    &__description {
+      font-size: var(--text-xs);
+      line-height: 1.4;
+    }
+
+    &__date {
+      font-size: var(--text-xs);
+    }
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+@media (max-width: 480px) {
+  .projects {
+    padding-block-end: var(--space-5xl);
+    
+    &__item {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    &__item-preview {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 0.5rem;
+    }
+
+    &__eyebrow {
+      font-size: var(--text-xl);
+    }
+
+    &__name {
+      font-size: 1rem;
+    }
+  }
 }

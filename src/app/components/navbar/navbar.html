@@ -1,44 +1,85 @@
-
 <nav
+  #navbarRef
   class="navbar"
   [class.scrolled]="isScrolled()"
   [class.hidden]="navbarHidden()"
 >
-  <span class="navbar__brand">
-      <img [src]="'assets/jnb_logo.png'" alt="" srcset="">
+
+  <span #brandRef class="navbar__brand">
+    <img [src]="logo" alt="logo" />
   </span>
 
-    <div class="btn__container">
-      <button (click)="openResume()" class="resume__btn">
-        Resume
+  <!-- DESKTOP NAV -->
+  <div
+      #linksRef
+      class="navbar__links"
+      [class.hidden]="isCompact()"
+    >
+
+    @for (link of navLinks; track link.label) {
+      <button (click)="scrollTo(link.anchor)">
+        {{ link.label }}
       </button>
-  
-      <button
-        class="hamburger ml-auto"
-        [class.open]="menuOpen()"
-        (click)="toggleMenu()"
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-
-  <div class="nav-overlay" [class.open]="menuOpen()">
-
-    <div class="nav-menu-box">
-
-      <ul class="nav-overlay__links">
-        @for (link of navLinks; track link.label) {
-          <li>
-            <button (click)="scrollTo(link.anchor)">
-              {{ link.label }}
-            </button>
-          </li>
-        }
-      </ul>
-
-    </div>
+    }
 
   </div>
+
+  <!-- ACTIONS (desktop only) -->
+  <div
+    #actionsRef
+    class="navbar__actions"
+    *ngIf="!isCompact()"
+  >
+
+    <button class="resume__btn" (click)="openResume()">
+      Resume
+    </button>
+
+    <button class="theme-toggle" (click)="toggleTheme()">
+      <i class="fa" [ngClass]="theme() === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+
+  </div>
+
+  <!-- HAMBURGER (only mobile) -->
+  <button
+    class="hamburger"
+    *ngIf="isCompact()"
+    [class.open]="menuOpen()"
+    (click)="toggleMenu()"
+  >
+    <span></span>
+    <span></span>
+  </button>
+
 </nav>
+
+<!-- BACKDROP -->
+<div
+  class="nav-backdrop"
+  [class.open]="menuOpen()"
+  (click)="toggleMenu()"
+></div>
+
+<!-- SIDEBAR -->
+<aside class="nav-sidebar" [class.open]="menuOpen()">
+
+  <div class="nav-sidebar__content">
+
+    @for (link of navLinks; track link.label) {
+      <button (click)="scrollTo(link.anchor)">
+        {{ link.label }}
+      </button>
+    }
+
+    <button class="resume__btn" (click)="openResume()">
+      Resume
+    </button>
+
+    <button class="theme-toggle" (click)="toggleTheme()">
+      <i class="fa" [ngClass]="theme() === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
+    </button>
+
+  </div>
+
+</aside>

@@ -2,24 +2,33 @@
   background: var(--color-bg-alt);
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-3xl);
-
+  height: max-content !important;
+  
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-3xl);
     padding-bottom: var(--space-3xl);
-  }
+    margin-inline: auto !important;
+    max-width: var(--max-width);
 
+    @media (max-width: 1400px) {
+      & {
+        padding-inline: var(--section-px) !important;
+      }
+    }
+  }
+  
   &__col {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-
+    
     &--right {
       align-items: flex-start;
     }
   }
-
+  
   &__col-title {
     font-size: var(--text-sm);
     font-weight: 700;
@@ -28,25 +37,25 @@
     letter-spacing: 0.08em;
     margin-bottom: var(--space-xs);
   }
-
+  
   &__link {
     font-size: var(--text-sm);
     color: var(--color-text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
-
+    
     &:hover {
       color: var(--color-orange);
     }
   }
-
+  
   &__socials {
     display: flex;
     align-items: center;
     gap: var(--space-lg);
     margin-top: var(--space-sm);
   }
-
+  
   &__social-link {
     display: flex;
     align-items: center;
@@ -55,12 +64,12 @@
     color: var(--color-orange);
     text-decoration: none;
     transition: color var(--transition-fast);
-
+    
     &:hover {
       color: var(--color-orange);
     }
   }
-
+  
   &__nav-link {
     background: none;
     border: none;
@@ -70,25 +79,33 @@
     cursor: pointer;
     padding: 0;
     transition: color var(--transition-fast);
-
+    
     &:hover {
       color: var(--color-orange);
     }
   }
-
+  
   &__bottom {
     border-top: 1px solid var(--color-border);
-    padding: var(--space-lg) 0;
+    padding-inline: var(--section-px);
+    padding-block: var(--space-lg);
     font-size: var(--text-xs);
     color: var(--color-text-muted);
   }
 }
 
+.bottom-container {
+  margin-inline: auto !important;
+  max-width: var(--max-width);
+}
+
 @media (max-width: 767px) {
   .footer {
     &__grid {
-      grid-template-columns: 1fr;
       gap: var(--space-2xl);
+      padding-inline: var(--section-px) !important;
+      display: flex;
+      flex-direction: column-reverse;
     }
   }
 }

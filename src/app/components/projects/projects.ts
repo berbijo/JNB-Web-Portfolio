@@ -130,6 +130,14 @@ export class Projects implements AfterViewInit, OnDestroy {
 
     if (this.activeProject().id === project.id) return;
 
+  // disable heavy animation on small screens
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+    this.activeProject.set(project);
+    return;
+  }
+
     const image   = this.previewImageRef?.nativeElement;
     const overlay = this.previewOverlayRef?.nativeElement;
 

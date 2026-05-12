@@ -1,14 +1,14 @@
 <section #traitsSection id="traits" class="traits">
 
-  <div class="traits__label-row">
-    <div class="container-portfolio w-full mx-auto">
-      <span class="traits__label section-title header">I am</span>
+  <div class="traits__label-row section-title container-portfolio">
+    <div>
+      <span class="traits__label">I am</span>
     </div>
   </div>
 
   @for (trait of traits; track trait.word) {
   <div #traitRow class="traits__row">
-    <div class="container-portfolio w-full mx-auto traits__row-inner">
+    <div class="traits__row-inner container-portfolio">
 
       <span #traitWord class="traits__word">
 
