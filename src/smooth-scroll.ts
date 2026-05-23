@@ -6,7 +6,7 @@ export function createLenis(platformId: Object) {
     if (!isPlatformBrowser(platformId)) return;
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 0,
       smoothWheel: true,
     });
 

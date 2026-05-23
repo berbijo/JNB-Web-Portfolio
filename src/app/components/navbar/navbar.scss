@@ -1,11 +1,17 @@
 
 .navbar {
   position: fixed;
-  top: 0;
+  margin-inline: auto;
+  top: 10px;
   left: 0;
   right: 0;
-  width: 100svw !important;
+  max-width: 1300px;
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.04);
+  border-radius: 1000px;
+  background: var(--nav-color-bg);
 
+ 
   z-index: var(--z-nav);
   height: var(--nav-height);
 
@@ -31,8 +37,6 @@
     background: var(--navbar-bg-scrolled);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow:
-      0 8px 30px rgba(0,0,0,.04);
   }
 
   &__brand {
@@ -56,8 +60,8 @@
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  gap: 3rem;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
 
   button {
     background: none;
@@ -261,7 +265,7 @@
   transform: translateX(100%);
   transition: transform 0.35s ease;
 
-  z-index: calc(var(--z-nav) + 2);
+  z-index: calc(var(--z-nav) + 2) !important;
 
   @media (max-width: 370px) {
     & {

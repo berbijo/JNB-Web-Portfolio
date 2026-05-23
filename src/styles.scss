@@ -10,9 +10,17 @@
 
 html[data-theme="light"] {
   /* Backgrounds */
-  --color-bg: #f6f6f6;
+  --color-bg: #ffffff;
+  --nav-color-bg: #ffffff;
   --color-bg-alt: #EDECE9;
   --color-surface: rgb(255, 255, 255);
+
+  // traits cards
+  --traits-box-bg: #ffffff;
+  --traits-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --dark-orange-bg: #E57C32;
+  --light-orange-bg: #FFCA9F;
+  --light-orange-color: #E57C32;
 
   /* Borders */
   --color-border: #D8D6D2;
@@ -49,12 +57,12 @@ html[data-theme="light"] {
   --gradient-blob:
     radial-gradient(
       circle at 50% 50%,
-      rgb(from var(--blob-core) r g b / 0.34) 0%,
-      rgb(from var(--blob-core) r g b / 0.24) 27%,
-      rgb(from var(--blob-accent) r g b / 0.18) 42%,
-      rgb(from var(--blob-accent) r g b / 0.10) 58%,
-      rgb(from var(--blob-accent) r g b / 0.045) 70%,
-      rgb(from var(--blob-accent) r g b / 0.015) 80%,
+      rgb(from var(--color-orange) r g b / 0.28) 0%,
+      rgb(from var(--color-orange) r g b / 0.20) 22%,
+      rgb(from var(--color-orange) r g b / 0.14) 40%,
+      rgb(from var(--color-orange) r g b / 0.08) 58%,
+      rgb(from var(--color-orange) r g b / 0.04) 72%,
+      rgb(from var(--color-orange) r g b / 0.015) 84%,
       transparent 100%
     );
 }
@@ -66,8 +74,16 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   /* Backgrounds */
   --color-bg: #161a1e;
+  --nav-color-bg: #161a1e9e;
   --color-bg-alt: #1E2429;
   --color-surface: #242B31;
+
+  // traits cards
+  --traits-box-bg: #100e0e;
+  --traits-box-shadow: rgba(52, 52, 52, 0.2) 0px 8px 24px;
+  --dark-orange-bg: #b23d15;
+  --light-orange-bg: #E57C32;
+  --light-orange-color: #F6F6F6;
 
   /* Borders */
   --color-border: #3A444D;
@@ -104,12 +120,13 @@ html[data-theme="dark"] {
   --gradient-blob:
     radial-gradient(
       circle at 50% 50%,
-      rgb(255 140 60 / 0.55) 0%,
-      rgb(255 130 50 / 0.38) 10%,
-      rgb(255 122 26 / 0.20) 25%,
-      rgb(255 122 26 / 0.12) 40%,
-      rgb(255 122 26 / 0.06) 60%,
-      transparent 78%
+      rgb(from var(--color-orange) r g b / 0.50) 0%,
+      rgb(from var(--color-orange) r g b / 0.34) 16%,
+      rgb(from var(--color-orange) r g b / 0.22) 34%,
+      rgb(from var(--color-orange) r g b / 0.14) 50%,
+      rgb(from var(--color-orange) r g b / 0.08) 66%,
+      rgb(from var(--color-orange) r g b / 0.04) 78%,
+      transparent 92%
     );
 }
 
@@ -147,6 +164,7 @@ html[data-theme="dark"] {
   --space-3xl: 4rem;     /* 64px */
   --space-4xl: 6rem;     /* 96px */
   --space-5xl: 8rem;     /* 128px */
+  --space-6xl: 10rem;     /* 128px */
 
   /* Layout */
   --max-width: 1200px;
@@ -194,6 +212,7 @@ html[data-theme="dark"] {
     --space-3xl: 3.5rem;   /* 56px */
     --space-4xl: 5rem;     /* 80px */
     --space-5xl: 6.5rem;   /* 104px */
+    --space-6xl: 8rem;   /* 104px */
 
     /* Layout */
     --nav-height: 85px;
@@ -230,6 +249,7 @@ html[data-theme="dark"] {
     --space-3xl: 2.5rem;   /* 40px */
     --space-4xl: 3.5rem;   /* 56px */
     --space-5xl: 4.5rem;   /* 72px */
+    --space-6xl: 5.5rem;   /* 72px */
 
     /* Layout */
     --nav-height: 85px;
@@ -252,6 +272,7 @@ html[data-theme="dark"] {
     --space-3xl: 2.25rem;  /* 36px */
     --space-4xl: 3rem;     /* 48px */
     --space-5xl: 4rem;     /* 64px */
+    --space-5xl: 5rem;     /* 64px */
 
     /* Layout */
     --section-px: 2rem;

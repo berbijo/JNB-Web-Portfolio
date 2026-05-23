@@ -2,7 +2,7 @@ export const OWNER = {
   name: 'Joshua Berbie',
   funBadge: 'It was never Barbie bro',
   title: 'Software Engineer',
-  tagline: 'I build intuitive and future proof web applications.\nI can design too – hehe.',
+  tagline: 'I build/design intuitive, user-centered, and decent looking web applications.',
   location: 'Batangas, Philippines',
   email: 'joshuaberbie0@gmail.com',
   phone: '+63 977 102 7584',
