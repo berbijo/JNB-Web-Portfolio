@@ -72,64 +72,64 @@ html[data-theme="light"] {
    DARK THEME
    ========================================= */
 
-html[data-theme="dark"] {
-  /* Backgrounds */
-  --color-bg: #161a1e;
-  --nav-color-bg: #161a1e9e;
-  --color-bg-alt: #1E2429;
-  --color-surface: #242B31;
+// html[data-theme="dark"] {
+//   /* Backgrounds */
+//   --color-bg: #161a1e;
+//   --nav-color-bg: #161a1e9e;
+//   --color-bg-alt: #1E2429;
+//   --color-surface: #242B31;
 
-  // traits cards
-  --traits-box-bg: #100e0e;
-  --traits-box-shadow: rgba(52, 52, 52, 0.2) 0px 8px 24px;
-  --dark-orange-bg: #b23d15;
-  --light-orange-bg: #E57C32;
-  --light-orange-color: #F6F6F6;
+//   // traits cards
+//   --traits-box-bg: #100e0e;
+//   --traits-box-shadow: rgba(52, 52, 52, 0.2) 0px 8px 24px;
+//   --dark-orange-bg: #b23d15;
+//   --light-orange-bg: #E57C32;
+//   --light-orange-color: #F6F6F6;
 
-  /* Borders */
-  --color-border: #3A444D;
-  --color-border-light: #4A5560;
+//   /* Borders */
+//   --color-border: #3A444D;
+//   --color-border-light: #4A5560;
 
-  /* Text */
-  --color-text-primary: #e9ebed;
-  --color-text-secondary: #B6BDC5;
-  --color-text-muted: #7E8791;
+//   /* Text */
+//   --color-text-primary: #e9ebed;
+//   --color-text-secondary: #B6BDC5;
+//   --color-text-muted: #7E8791;
 
-  /* Accent */
-  --color-orange: #E57C32;
-  --color-orange-light: #F4A261;
-  --color-orange-pale: #FFCFA0;
-  --color-orange-bg: #FFF4EC;
+//   /* Accent */
+//   --color-orange: #E57C32;
+//   --color-orange-light: #F4A261;
+//   --color-orange-pale: #FFCFA0;
+//   --color-orange-bg: #FFF4EC;
 
-  /* Blob */
-  --blob-core: var(--color-orange-light);
-  --blob-accent: var(--color-orange);
+//   /* Blob */
+//   --blob-core: var(--color-orange-light);
+//   --blob-accent: var(--color-orange);
 
-  /* Effects */
-  --navbar-bg-scrolled: rgb(from var(--color-bg) r g b / 0.75);
-  --blob-blend: screen;
+//   /* Effects */
+//   --navbar-bg-scrolled: rgb(from var(--color-bg) r g b / 0.75);
+//   --blob-blend: screen;
 
-  /* Gradients */
-  --gradient-orange:
-    linear-gradient(
-      90deg,
-      rgb(from var(--color-bg) r g b / 0) 25%,
-      rgb(from var(--blob-core) r g b / 0.95) 60%,
-      rgb(from var(--blob-accent) r g b / 1) 100%
-    );
+//   /* Gradients */
+//   --gradient-orange:
+//     linear-gradient(
+//       90deg,
+//       rgb(from var(--color-bg) r g b / 0) 25%,
+//       rgb(from var(--blob-core) r g b / 0.95) 60%,
+//       rgb(from var(--blob-accent) r g b / 1) 100%
+//     );
 
-  --gradient-blob:
-    radial-gradient(
-      circle at 50% 50%,
-      rgb(from var(--color-orange) r g b / 0.50) 0%,
-      rgb(from var(--color-orange) r g b / 0.34) 16%,
-      rgb(from var(--color-orange) r g b / 0.22) 34%,
-      rgb(from var(--color-orange) r g b / 0.14) 50%,
-      rgb(from var(--color-orange) r g b / 0.08) 66%,
-      rgb(from var(--color-orange) r g b / 0.04) 78%,
-      transparent 92%
-    );
-}
+//   --gradient-blob:
+//     radial-gradient(
+//       circle at 50% 50%,
+//       rgb(from var(--color-orange) r g b / 0.50) 0%,
+//       rgb(from var(--color-orange) r g b / 0.34) 16%,
+//       rgb(from var(--color-orange) r g b / 0.22) 34%,
+//       rgb(from var(--color-orange) r g b / 0.14) 50%,
+//       rgb(from var(--color-orange) r g b / 0.08) 66%,
+//       rgb(from var(--color-orange) r g b / 0.04) 78%,
+//       transparent 92%
+//     );
+// }
 
 /* =========================================
    ROOT VARIABLES
