@@ -20,10 +20,14 @@ import { PROJECTS, Project } from '../../constants/portfolio.constants';
 import { gsap } from 'gsap';
 import { NavigationService } from '../../../navigation.service';
 import { Cursor } from '../../components/cursor/cursor';
+import { HireMe } from "../../components/hire-me/hire-me";
+import { Navbar } from "../../components/navbar/navbar";
+import { Footer } from "../../components/footer/footer";
+import { About } from "../../appv2/components/about/about";
 
 @Component({
   selector: 'app-view-project',
-  imports: [CommonModule, Cursor],
+  imports: [CommonModule, Cursor, HireMe, Navbar, Footer, About],
   templateUrl: './view-project.html',
   styleUrl: './view-project.scss',
 })

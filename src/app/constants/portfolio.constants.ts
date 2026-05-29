@@ -91,32 +91,32 @@ export const EXPERIENCE = {
       duration: '1 year',
       durationHighlight: true,
       description:
-        'Develop and maintain full-stack applications aligned with business requirements, covering both frontend and backend development. Design user-centered UI/UX based on client feedback, while managing database architecture and supporting cloud deployment. Collaborate in Agile Scrum processes, communicate regularly with stakeholders, and contribute to team growth through knowledge sharing and mentoring.',
+        'Did frontend to backend development, some database administration and architecture, supported cloud deployment, and design UI/UX. Also participated in Agile scrum practices.',
       techs: [
+        'Git',
+        'Docker',
+        'Microsoft Azure',
+        'SonarQube',
+        'Snyk',
         'Springboot (Java)',
         'Angular (TypeScript)',
         'MongoDB',
         'MySQL Workbench',
-        'Microsoft Azure',
-        'Git',
-        'Docker',
         'Figma',
         'Postman',
         'RabbitMQ',
-        'SonarQube',
-        'Snyk',
       ],
     },
     {
       id: 'nexus-intern',
-      role: 'Software Engineer Internship',
+      role: 'Software Engineer Intern',
       company: 'Nexus Elixir Solutions Corp.',
       companyLink: 'https://nexuselixir.com/',
       period: 'Feb 2025 – May 2025',
       duration: '4 months',
       durationHighlight: true,
       description:
-        'I completed IT bootcamps focused on industry practices and hands-on development, contributed to the application’s UI/UX design, and transformed mockups into functional code integrated with backend microservices. I also collaborated with cross-functional teams to ensure smooth frontend and backend integration.',
+        'Designed the initial UI/UX for the HRS app, developed it into code, integrated the frontend with backend microservices, and participated in agile practices and intensive industry-standard development boot camps.',
       techs: [
         'Springboot (Java)',
         'Angular (TypeScript)',
@@ -238,7 +238,7 @@ export const PROJECTS: Project[] = [
     name: 'Web Portfolio',
     category: 'Design & Development',
 
-    previewImage: 'assets/projects/portfolio.png',
+    previewImage: 'assets/projects/webport.png',
 
     description: 'Personal Web Portfolio',
 
@@ -260,7 +260,7 @@ export const PROJECTS: Project[] = [
     name: 'Human Resource System',
     category: 'Design & Development',
 
-    previewImage: 'assets/projects/hrs.webp',
+    previewImage: 'assets/projects/hrs.png',
 
     description:
       'A centralized HR ecosystem for payroll, attendance, employee, task management, and other intraorganizational management.',
@@ -316,7 +316,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'chatbot',
     name: 'UniQue Chatbot',
-    category: 'Development',
+    category: 'Design & Development',
 
     previewImage: 'assets/projects/chatbot.webp',
 
@@ -343,7 +343,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'farm',
     name: 'Oni Farm Management System',
-    category: 'Development',
+    category: 'Design & Development',
 
     previewImage: 'assets/projects/oni.webp',
 
@@ -370,7 +370,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'pizza',
     name: "Ella's pizza",
-    category: 'Development',
+    category: 'Design & Development',
 
     previewImage: 'assets/projects/ellas.webp',
 
@@ -396,7 +396,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const NAV_LINKS = [
-  { label: 'About', anchor: '#hero' },
+  { label: 'About', anchor: '#about' },
   { label: 'Experience', anchor: '#experience' },
   { label: 'Projects & Designs', anchor: '#projects' },
   { label: 'Hire Me', anchor: '#contact' },

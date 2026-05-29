@@ -63,15 +63,14 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
-          "options": {
-            "host": "0.0.0.0",
-            "allowedHosts": [
-              ".local",
-              "192.168.1.7"
-            ]
-          },
-          "configurations": {
+        "builder": "@angular/build:dev-server",
+        "options": {
+          "host": "0.0.0.0",
+          "allowedHosts": [
+            "192.168.1.17"
+          ]
+        },
+        "configurations": {
             "production": {
               "buildTarget": "jnb-web-portfolio:build:production"
             },

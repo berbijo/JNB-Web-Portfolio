@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { OWNER, FOOTER_LINKS } from '../../constants/portfolio.constants';
+import { OWNER } from '../../../constants/portfolio.constants';
 
 @Component({
-  selector: 'app-footer',
-  imports: [CommonModule],
-  templateUrl: './footer.html',
-  styleUrl: './footer.scss',
+  selector: 'app-about',
+  imports: [],
+  templateUrl: './about.html',
+  styleUrl: './about.scss',
 })
-export class Footer {
+export class About {
   owner = OWNER;
-  footerLinks = FOOTER_LINKS;
+
   toastMessage = '';
   showToast = false;
 
-   copyEmail() {
+  copyEmail() {
     const email = 'joshuaberbie0@gmail.com';
 
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -69,10 +68,5 @@ export class Footer {
         this.showToast = false;
       }, 2000);
     }
-  }
-
-  scrollTo(anchor: string) {
-    const el = document.querySelector(anchor);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 }

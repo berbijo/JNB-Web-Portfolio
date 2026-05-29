@@ -61,6 +61,9 @@ export class Hero implements OnDestroy {
   @ViewChild('loaderBar')
   loaderBar!: ElementRef<HTMLElement>;
 
+  @ViewChild('titleSwitcher')
+  titleSwitcher!: ElementRef<HTMLElement>;
+
   private ngZone = inject(NgZone);
 
   private platformId =
@@ -381,10 +384,11 @@ export class Hero implements OnDestroy {
       '-=0.4'
     );
 
-    // Animate pill after everything else
     tl.add(() => {
       this.animatePill();
     }, '-=0.3');
+
+    this.animateTitleSwitcher();
 
     const ownerName = this.ownerName.nativeElement;
 
@@ -394,11 +398,6 @@ export class Hero implements OnDestroy {
 
   }
 
-  /*
-  =========================================
-  PILL
-  =========================================
-  */
 
   private animatePill(): void {
 
@@ -522,27 +521,24 @@ export class Hero implements OnDestroy {
     const block = (event.currentTarget as HTMLElement);
     const row = block.closest('.row');
     
-    // Close if already expanded
     if (block.classList.contains('expanded')) {
       block.classList.remove('expanded');
       row?.classList.remove('has-expanded');
       return;
     }
 
-    // Close any other expanded blocks
     const allBlocks = document.querySelectorAll('.block.expanded');
     allBlocks.forEach(b => {
       b.classList.remove('expanded');
       b.closest('.row')?.classList.remove('has-expanded');
     });
 
-    // Expand this block
     block.classList.add('expanded');
     row?.classList.add('has-expanded');
   }
 
   closeTrait(event: Event): void {
-    event.stopPropagation(); // Prevent triggering toggleTrait
+    event.stopPropagation(); 
     
     const button = event.currentTarget as HTMLElement;
     const block = button.closest('.block');
@@ -552,11 +548,69 @@ export class Hero implements OnDestroy {
     row?.classList.remove('has-expanded');
   }
 
-  /*
-  =========================================
-  SCROLL
-  =========================================
-  */
+  private animateTitleSwitcher(): void {
+
+    const el = this.titleSwitcher.nativeElement;
+
+    const titles = [
+      this.owner.title,
+      'UI/UX Designer',
+    ];
+
+    let current = 0;
+
+    const splitChars = (text: string) => {
+      return text
+        .split('')
+        .map(
+          (char) =>
+            `<span class="slot-char">${char === ' ' ? '&nbsp;' : char}</span>`
+        )
+        .join('');
+    };
+
+    el.innerHTML = splitChars(titles[0]);
+
+    setInterval(() => {
+
+      current = (current + 1) % titles.length;
+
+      const chars = el.querySelectorAll('.slot-char');
+
+      gsap.to(chars, {
+        y: '-120%',
+        opacity: 0,
+        stagger: 0.03,
+        duration: 0.45,
+        ease: 'power3.in',
+        onComplete: () => {
+
+          el.innerHTML = splitChars(titles[current]);
+
+          const newChars = el.querySelectorAll('.slot-char');
+
+          gsap.fromTo(
+            newChars,
+            {
+              y: '120%',
+              opacity: 0,
+            },
+            {
+              y: '0%',
+              opacity: 1,
+              stagger: 0.03,
+              duration: 0.55,
+              ease: 'power3.out',
+            }
+          );
+
+        },
+      });
+
+    }, 4500);
+
+  }
+
 
   scrollTo(anchor: string): void {
 

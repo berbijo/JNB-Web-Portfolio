@@ -1,0 +1,73 @@
+<section id="projects" class="section projects-section">
+    <div class="section-header">
+        <span>PROJECTS & DESIGNS</span>
+        <h1>projects I built/worked on and designs I've made</h1>
+    </div>
+
+    <div class="projects-container" [class.list-view]="showAll">
+        @for (project of displayedProjects; track project.id) {
+            <div class="project-item">
+                <div [routerLink]="['/projects', project.id]" class="project-img">
+                    <img [src]="project.previewImage" decoding="async" loading="lazy" alt="project"/>
+                </div>
+                <div class="project-description">
+                    <div class="row1">
+                        <span [routerLink]="['/projects', project.id]" class="name">{{ project.name }}</span>
+                        <div class="project-links">
+                            @if (project.github) {
+                                <a [href]="project.github" target="_blank" class="glass-btn">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span class="btn-label">GitHub</span>
+                                </a>
+                            }
+                            @if (project.figma) {
+                                <a [href]="project.figma" target="_blank" class="glass-btn">
+                                    <i class="fa-brands fa-figma"></i>
+                                    <span class="btn-label">Figma</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <span>{{ project.category }}</span>
+                    </div>
+                    <div class="row3">
+                        <span class="dev-date">{{ project.developmentDate }}</span>
+                    </div>
+                    <div class="project-techs">
+                        @for (tech of project.techStack; track $index) {
+                            <span>{{ tech }}</span>
+                        }
+                    </div>
+                    <div class="project-techs-mobile">
+                        <div class="tech-row row-1">
+                            <div class="tech-track">
+                                @for (tech of getFirstRow(project.techStack); track $index) {
+                                    <span>{{ tech }}</span>
+                                }
+                                @for (tech of getFirstRow(project.techStack); track $index) {
+                                    <span>{{ tech }}</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="tech-row row-2">
+                            <div class="tech-track">
+                                @for (tech of getSecondRow(project.techStack); track $index) {
+                                    <span>{{ tech }}</span>
+                                }
+                                @for (tech of getSecondRow(project.techStack); track $index) {
+                                    <span>{{ tech }}</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <button class="see-more" (click)="toggleAll()">
+        {{ showAll ? 'Show less' : 'See all' }}
+        <i class="fa-solid" [class.fa-arrow-right-long]="!showAll" [class.fa-arrow-up-long]="showAll"></i>
+    </button>
+</section>

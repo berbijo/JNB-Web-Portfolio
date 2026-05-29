@@ -64,11 +64,6 @@ export class Navbar implements OnInit, AfterViewInit {
 
   private lastScrollY = 0;
 
-  /*
-  =========================================
-  VIEWCHILDS
-  =========================================
-  */
 
   @ViewChild('navbarRef')
   navbarRef!: ElementRef<HTMLElement>;
@@ -82,11 +77,6 @@ export class Navbar implements OnInit, AfterViewInit {
   @ViewChild('actionsRef')
   actionsRef?: ElementRef<HTMLElement>;
 
-  /*
-  =========================================
-  INIT
-  =========================================
-  */
 
   ngOnInit(): void {
 
@@ -106,69 +96,36 @@ export class Navbar implements OnInit, AfterViewInit {
 
   }
 
-  /*
-  =========================================
-  INITIAL GSAP STATE
-  =========================================
-  */
 
-  ngAfterViewInit(): void {
+ngAfterViewInit(): void {
+  if (!isPlatformBrowser(this.platformId)) return;
 
-    if (!isPlatformBrowser(this.platformId))
-      return;
+  const brand = this.brandRef?.nativeElement;
+  const links = Array.from(
+    this.linksRef?.nativeElement?.querySelectorAll('button') ?? []
+  );
+  const actions = this.actionsRef
+    ? Array.from(this.actionsRef.nativeElement?.children ?? [])
+    : [];
 
-    const brand =
-      this.brandRef?.nativeElement;
+  const elementsToAnimate = [brand, ...links, ...actions].filter(Boolean);
 
-    const links =
-      Array.from(
-        this.linksRef?.nativeElement
-          ?.querySelectorAll('button') ?? []
-      );
-
-    // Only get actions if they exist (desktop only)
-    const actions = this.actionsRef
-      ? Array.from(this.actionsRef.nativeElement?.children ?? [])
-      : [];
-
-    // Filter out null/undefined elements
-    const elementsToAnimate = [
-      brand,
-      ...links,
-      ...actions,
-    ].filter(Boolean);
-
-    if (elementsToAnimate.length > 0) {
-      gsap.set(
-        elementsToAnimate,
-        {
-          opacity: 0,
-          y: -24,
-          filter: 'blur(8px)',
-        }
-      );
-    }
-
-    /*
-      WAIT FOR HERO LOADER
-    */
-
-    window.addEventListener(
-      'hero-loader-complete',
-      () => {
-        this.playEntranceAnimation();
-      },
-      { once: true }
-    );
-
+  if (elementsToAnimate.length > 0) {
+    gsap.set(elementsToAnimate, { opacity: 0, y: -24, filter: 'blur(8px)' });
   }
 
-  /*
-  =========================================
-  NAVBAR ENTRANCE
-  CALLED FROM HERO
-  =========================================
-  */
+  const heroExists = !!document.querySelector('#hero');
+
+  if (heroExists) {
+    window.addEventListener(
+      'hero-loader-complete',
+      () => this.playEntranceAnimation(),
+      { once: true }
+    );
+  } else {
+    setTimeout(() => this.playEntranceAnimation(), 50);
+  }
+}
 
   public playEntranceAnimation(): void {
 
@@ -190,11 +147,6 @@ export class Navbar implements OnInit, AfterViewInit {
         ease: 'power3.out',
       },
     });
-
-    /*
-    BRAND
-    */
-
     if (brand) {
 
       tl.to(
@@ -209,10 +161,6 @@ export class Navbar implements OnInit, AfterViewInit {
       );
 
     }
-
-    /*
-    LINKS
-    */
 
     if (links.length) {
 
@@ -233,10 +181,6 @@ export class Navbar implements OnInit, AfterViewInit {
       );
 
     }
-
-    /*
-    ACTIONS
-    */
 
     if (actions.length) {
 
@@ -259,12 +203,6 @@ export class Navbar implements OnInit, AfterViewInit {
     }
 
   }
-
-  /*
-  =========================================
-  SCROLL
-  =========================================
-  */
 
   @HostListener('window:scroll')
   onScroll(): void {
@@ -294,12 +232,6 @@ export class Navbar implements OnInit, AfterViewInit {
 
   }
 
-  /*
-  =========================================
-  RESIZE
-  =========================================
-  */
-
   @HostListener('window:resize')
   onResize(): void {
 
@@ -325,12 +257,6 @@ export class Navbar implements OnInit, AfterViewInit {
 
   }
 
-  /*
-  =========================================
-  MENU
-  =========================================
-  */
-
   toggleMenu(): void {
 
     this.menuOpen.update(v => !v);
@@ -345,11 +271,6 @@ export class Navbar implements OnInit, AfterViewInit {
 
   }
 
-  /*
-  =========================================
-  THEME
-  =========================================
-  */
 
   toggleTheme(): void {
 
@@ -391,12 +312,6 @@ export class Navbar implements OnInit, AfterViewInit {
 
   }
 
-  /*
-  =========================================
-  SCROLL TO
-  =========================================
-  */
-
   scrollTo(anchor: string): void {
 
     if (!isPlatformBrowser(this.platformId))
@@ -420,12 +335,6 @@ export class Navbar implements OnInit, AfterViewInit {
     this.closeMenu();
 
   }
-
-  /*
-  =========================================
-  RESUME
-  =========================================
-  */
 
   openResume(): void {
 

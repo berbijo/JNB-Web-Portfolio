@@ -4,17 +4,25 @@
   justify-content: center;
   align-items: center;
   padding-top: calc(var(--nav-height));
-  padding-bottom: var(--space-3xl);
   position: relative;
   overflow-x: clip;
-  padding-inline: var(--section-px) !important;
-
+  padding-inline: var(--section-px);
+  
   @media (max-width: 1024px) {
     padding-top: calc(var(--nav-height));
   }
   
-  @media (max-width: 767px) {
-    padding-top: calc(var(--nav-height));
+  
+  @media (max-width: 500px) {
+    padding-inline: 16px;
+    // align-items: flex-end;
+  }
+
+  .scrollNow {
+    position: absolute;
+    bottom: 10px; right: 16px;
+    color: var(--color-orange);
+    font-family: var(--font-cal-sans);
   }
 
   .bg_hero {
@@ -144,6 +152,14 @@
       font-size: var(--text-xs);
       padding: calc(var(--space-md) + 1.5px) var(--space-md);
     }
+
+    @media (max-width: 500px) {
+      display: none;
+      // top: -23px;
+      // left: 60%;
+      // font-size: var(--text-xs);
+      // padding: calc(var(--space-md) + 1.5px) var(--space-md);
+    }
   }
   
   &__badge-wrap {
@@ -165,25 +181,40 @@
 
   &__name {
     font-family: var(--font-cal-sans);
-    font-size: clamp(4rem, 6vw, 6.5rem);
+    font-size: clamp(3rem, 8vw, 8rem);
     font-weight: 500;
     line-height: 1.0;
     color: var(--color-text-primary);
     position: relative;
 
     @media (max-width: 1024px) {
-      font-size: clamp(3.75rem, 5.5vw, 5.5rem);
+      font-size: clamp(2.75rem, 7vw, 7rem);
     }
 
     @media (max-width: 767px) {
-      font-size: clamp(3.75rem, 9vw, 4.5rem);
+      font-size: clamp(2.5rem, 7vw, 7rem);
     }
-
-    @media (max-width: 480px) {
-      font-size: clamp(2.5rem, 8vw, 3rem);
+    
+    @media (max-width: 500px) {
+      align-self: flex-start;
+      line-height: 80%;
+      margin-block: var(--space-lg);
     }
   }
 
+  &__title-switcher {
+    position: relative;
+    overflow: hidden;
+    height: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 500px) {
+      justify-content: flex-start;
+    }
+  }
+    
   &__title {
     font-size: var(--text-3xl);
     font-weight: 700;
@@ -191,7 +222,7 @@
     font-family: var(--font-cal-sans);
     color: var(--color-text-primary);
     margin-bottom: var(--space-md);
-
+    
     @media (max-width: 1400px) {
       margin-bottom: 0;
     }
@@ -207,15 +238,15 @@
       margin-bottom: var(--space-sm);
     }
     
-    @media (max-width: 480px) {
-      font-size: var(--text-md);
+    @media (max-width: 500px) {
+      align-self: flex-start;
       letter-spacing: 0.8px;
       margin-bottom: var(--space-xl);
     }
   }
   
   &__tagline {
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     color: var(--color-text-primary);
     text-align: center;
     line-height: 1.6;
@@ -234,25 +265,36 @@
     @media (max-width: 767px) {
       margin-bottom: var(--space-md);
     }
+
+    @media (max-width: 500px) {
+      text-align: left;
+      margin-block: var(--space-md);
+    }
   }
 
   &__location {
     position: absolute;
-    top: -20%;
+    top: -10%;
     display: flex;
     align-items: center !important;
     gap: var(--space-xs);
     font-size: var(--text-sm);
     font-weight: 600;
     color: var(--color-text-primary);
-
+    
     span {
       padding-block-start: 5px;
     }
-
+    
     @media (max-width: 767px) {
+      top: -20%;
       font-size: var(--text-sm);
       gap: 6px;
+    }
+    
+    @media (max-width: 500px) {
+      top: -7%;
+      align-self: flex-start;
     }
 
     svg {
@@ -372,7 +414,6 @@
     transition:
       background 0.35s ease,
       color 0.35s ease,
-      transform 0.35s ease,
       box-shadow 0.35s ease;
 
     @media (max-width: 1024px) {
@@ -386,10 +427,13 @@
       width: 50%;
     }
 
+    @media (max-width: 500px) {
+      align-self: flex-start;
+    }
+
     &:hover {
       background: var(--color-orange);
       color: white;
-      transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(229, 124, 50, 0.22);
 
       @media (pointer: coarse) {
@@ -447,6 +491,11 @@
   }
 }
 
+.slot-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
 .traits_grid {
   position: absolute;
   bottom: calc(-1 * var(--space-lg));
@@ -456,10 +505,6 @@
   flex-direction: column;
   gap: var(--space-lg);
 
-  /* =========================================
-     ROWS
-     ========================================= */
-  
   .row {
     display: grid;
     gap: var(--space-lg);
@@ -476,9 +521,6 @@
     grid-template-columns: 27% 1fr 1.3fr 15%;
   }
 
-  /* =========================================
-     BLOCKS - BASE STYLES
-     ========================================= */
   
   .block {
     position: relative;

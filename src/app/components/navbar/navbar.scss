@@ -89,10 +89,6 @@
   }
 }
 
-/* =========================================
-   ACTIONS (RESUME + THEME + HAMBURGER)
-   ========================================= */
-
 .navbar__actions {
   display: flex;
   gap: var(--space-md);
@@ -108,9 +104,6 @@
   gap: 1.5rem;
 }
 
-/* =========================================
-   RESUME BUTTON
-   ========================================= */
 
 .resume__btn {
   display: flex;
@@ -142,7 +135,6 @@
   &:hover {
     background: var(--color-orange);
     color: white;
-    transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(229, 124, 50, .22);
   }
 }

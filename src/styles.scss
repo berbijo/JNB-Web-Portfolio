@@ -14,6 +14,7 @@ html[data-theme="light"] {
   --nav-color-bg: #ffffff;
   --color-bg-alt: #EDECE9;
   --color-surface: rgb(255, 255, 255);
+  --bg-work: #F3F3F3;
 
   // traits cards
   --traits-box-bg: #ffffff;
@@ -42,7 +43,7 @@ html[data-theme="light"] {
   --blob-accent: var(--color-orange);
 
   /* Effects */
-  --navbar-bg-scrolled: rgb(from var(--color-bg) r g b / 0.75);
+  --navbar-bg-scrolled: rgb(from var(--color-bg) r g b / 0.45);
   --blob-blend: multiply;
 
   /* Gradients */
@@ -308,13 +309,77 @@ body {
   font-family: var(--font-cambay);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* =========================================
-   COMPONENT CLASSES
-   ========================================= */
+.section {
+  padding-inline: 20px;
+  padding-block: var(--space-3xl);
+  margin-inline: auto;
+  // max-width: 1800px;
+  
+  @media (max-width: 500px) {
+    padding-inline: 16px;
+  }
+}
+
+.section-header {
+  padding-inline-start: var(--space-4xl);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-xl);
+  
+
+  span {
+    font-family: var(--font-cal-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    
+    @media (max-width: 1024px) {
+      margin-bottom: 0px;
+    }
+  }
+
+  h1 {
+    font-family: var(--font-cal-sans);
+    font-size: var(--text-6xl);
+    color: var(--color-text-primary);
+    line-height: 90%;
+    
+    @media (max-width: 980px) {
+      font-size: var(--text-4xl);
+    }
+    
+    @media (max-width: 767px) {
+      line-height: 1;
+      font-size: var(--text-3xl);
+    }
+  }
+
+  @media (max-width: 1180px) {
+    font-size: var(--text-4xl);
+    padding-inline-start: 0;
+  }
+  
+  @media (max-width: 767px) {
+    font-size: var(--text-3xl);
+    // padding-inline-start: 0;
+  }
+}
+
+.see-more {
+  display: block;
+  color: var(--color-orange);
+  font-family: var(--font-cal-sans);
+  font-weight: 500;
+  font-size: var(--text-md);
+  margin-block-start: var(--space-2xl);
+  margin-inline: auto;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 @layer components {
   .container-portfolio {
@@ -325,7 +390,6 @@ body {
     padding-right: var(--section-px);
   }
 
-  /* Section base */
   .section-base {
     padding-top: var(--section-py);
     padding-bottom: var(--section-py);
@@ -341,7 +405,6 @@ body {
     font-size: var(--text-5xl) !important;
     letter-spacing: 2px !important;
 
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
       font-size: var(--text-4xl) !important;
       letter-spacing: 1.5px !important;
@@ -362,10 +425,9 @@ body {
     background: transparent;
     transition: background var(--transition-fast), color var(--transition-fast);
 
-    /* RESPONSIVE */
     @media (max-width: 767px) {
       padding: 2px 8px !important;
-      font-size: 0.6875rem !important; /* 11px */
+      font-size: 0.6875rem !important;
     }
 
     &:hover {
@@ -584,4 +646,13 @@ body {
 ::selection {
   background: var(--color-orange-pale);
   color: var(--color-text-primary);
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }

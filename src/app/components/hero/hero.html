@@ -1,4 +1,7 @@
 <section  id="hero" #heroSection class="hero section-base">
+  <div class="scrollNow">
+    Scroll <i class="fa-solid fa-angles-down"></i>
+  </div>
   <img class="bg_hero" decoding="async" loading="eager" src="assets/BG-HERO.jpg" alt="">
 
   <div #heroLoader class="hero__loader">
@@ -27,7 +30,9 @@
       {{ owner.name }}
       <span #pill class="pill">{{ owner.funBadge }}</span>
     </a>
-    <p class="hero__title">{{ owner.title }}</p>
+    <p #titleSwitcher class="hero__title hero__title-switcher">
+      {{ owner.title }}
+    </p>
 
     <p class="hero__tagline">
       @for (line of owner.tagline.split('\n'); track $index) {
@@ -74,51 +79,5 @@
     </div> -->
   </div>
 
-  <div class="traits_grid">
-    <!-- row 1 -->
-    <div class="row row1">
-      <div class="block white"></div>
 
-      <div class="block tilted dark" (click)="toggleTrait($event)">
-        <button class="close-btn" (click)="closeTrait($event)">×</button>
-        <span class="hidden_desc">
-          {{ traits[0].description }}
-        </span>
-        <span>{{ traits[0].word }}</span>
-      </div>
-      
-      <div class="block tilted orange" (click)="toggleTrait($event)">
-        <button class="close-btn" (click)="closeTrait($event)">×</button>
-        <span class="hidden_desc">
-          {{ traits[2].description }}
-        </span>
-        <span>{{ traits[2].word }}</span>
-      </div>
-      
-      <div class="block white short"></div>
-    </div>
-    
-    <!-- row 2 -->
-    <div class="row row2">
-      <div class="block white long"></div>
-      
-      <div class="block tilted peach" (click)="toggleTrait($event)">
-        <button class="close-btn" (click)="closeTrait($event)">×</button>
-        <span class="hidden_desc">
-          {{ traits[3].description }}
-        </span>
-        <span>{{ traits[3].word }}</span>
-      </div>
-      
-      <div class="block tilted gray" (click)="toggleTrait($event)">
-        <button class="close-btn" (click)="closeTrait($event)">×</button>
-        <span class="hidden_desc">
-          {{ traits[1].description }}
-        </span>
-        <span>{{ traits[1].word }}</span>
-      </div>
-
-      <div class="block white"></div>
-    </div>
-  </div>
 </section>

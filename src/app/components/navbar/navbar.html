@@ -9,7 +9,6 @@
     <img [src]="logo" alt="logo" />
   </span>
 
-  <!-- DESKTOP NAV -->
   <div
       #linksRef
       class="navbar__links"
@@ -24,7 +23,6 @@
 
   </div>
 
-  <!-- ACTIONS (desktop only) -->
   <div
     #actionsRef
     class="navbar__actions"
@@ -35,13 +33,12 @@
       Resume
     </button>
 
-    <button class="theme-toggle" (click)="toggleTheme()">
+    <!-- <button class="theme-toggle" (click)="toggleTheme()">
       <i class="fa" [ngClass]="theme() === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
-    </button>
+    </button> -->
 
   </div>
 
-  <!-- HAMBURGER (only mobile) -->
   <button
     class="hamburger"
     *ngIf="isCompact()"
@@ -54,14 +51,12 @@
 
 </nav>
 
-<!-- BACKDROP -->
 <div
   class="nav-backdrop"
   [class.open]="menuOpen()"
   (click)="toggleMenu()"
 ></div>
 
-<!-- SIDEBAR -->
 <aside class="nav-sidebar" [class.open]="menuOpen()">
 
    <button
@@ -85,9 +80,9 @@
       Resume
     </button>
 
-    <button class="theme-toggle" (click)="toggleTheme()">
+    <!-- <button class="theme-toggle" (click)="toggleTheme()">
       <i class="fa" [ngClass]="theme() === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
-    </button>
+    </button> -->
 
   </div>
 

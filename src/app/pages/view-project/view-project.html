@@ -1,5 +1,6 @@
 <app-cursor></app-cursor>
-@if (notFound()) {
+<section class="section viewp">
+  @if (notFound()) {
 <div class="detail-404">
   <p>Project not found.</p>
   <button (click)="goBack()">← Back to projects</button>
@@ -129,3 +130,8 @@
 
 </div>
 }
+</section>
+
+<app-about></app-about>
+<app-hire-me></app-hire-me>
+<app-footer></app-footer>
