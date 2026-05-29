@@ -301,7 +301,7 @@ export const PROJECTS: Project[] = [
       'A minimalist and modern UI design for On the wash, a laundry shop on-the-go mobile application.',
 
     longDescription:
-      'A modern UI/UX design mockup for an app (On the Wash), basically a rollinglaundry shop. focused on delivering a clean, minimalist, and user-friendly experience. Designed to emphasize intuitive navigation, seamless booking flows, and visually polished interfaces tailored for usability and accessibility. ',
+      'A modern UI/UX design mockup for an app (On the Wash), basically a rolling laundry shop. focused on delivering a clean, minimalist, and user-friendly experience. Designed to emphasize intuitive navigation, seamless booking flows, and visually polished interfaces tailored for usability and accessibility. ',
 
     developmentDate: 'December 2025',
 

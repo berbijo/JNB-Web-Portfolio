@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { OWNER } from '../../../constants/portfolio.constants';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-about',
@@ -12,6 +13,11 @@ export class About {
 
   toastMessage = '';
   showToast = false;
+
+  constructor(
+    @Inject(PLATFORM_ID)
+    private readonly platformId: Object,
+  ) {}
 
   copyEmail() {
     const email = 'joshuaberbie0@gmail.com';
@@ -68,5 +74,14 @@ export class About {
         this.showToast = false;
       }, 2000);
     }
+  }
+
+  openResume(): void {
+
+    if (!isPlatformBrowser(this.platformId))
+      return;
+
+    window.open('/resume', '_blank');
+
   }
 }

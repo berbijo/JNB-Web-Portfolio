@@ -136,6 +136,65 @@ html[data-theme="light"] {
    ========================================= */
 
 :root {
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --nav-color-bg: #ffffff;
+  --color-bg-alt: #EDECE9;
+  --color-surface: rgb(255, 255, 255);
+  --bg-work: #F3F3F3;
+
+  // traits cards
+  --traits-box-bg: #ffffff;
+  --traits-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --dark-orange-bg: #E57C32;
+  --light-orange-bg: #FFCA9F;
+  --light-orange-color: #E57C32;
+
+  /* Borders */
+  --color-border: #D8D6D2;
+  --color-border-light: #E8E6E2;
+
+  /* Text */
+  --color-text-primary: #3B3B3B;
+  --color-text-secondary: #6B6B6B;
+  --color-text-muted: #9B9B9B;
+
+  /* Accent */
+  --color-orange: #E57C32;
+  --color-orange-light: #F4A261;
+  --color-orange-pale: #FFCFA0;
+  --color-orange-bg: #FFF4EC;
+
+  /* Blob */
+  --blob-core: var(--color-orange-pale);
+  --blob-accent: var(--color-orange);
+
+  /* Effects */
+  --navbar-bg-scrolled: rgb(from var(--color-bg) r g b / 0.45);
+  --blob-blend: multiply;
+
+  /* Gradients */
+  --gradient-orange:
+    linear-gradient(
+      90deg,
+      rgb(from var(--color-bg) r g b / 0) 30%,
+      var(--blob-core) 60%,
+      var(--blob-accent) 100%
+    );
+
+  --gradient-blob:
+    radial-gradient(
+      circle at 50% 50%,
+      rgb(from var(--color-orange) r g b / 0.28) 0%,
+      rgb(from var(--color-orange) r g b / 0.20) 22%,
+      rgb(from var(--color-orange) r g b / 0.14) 40%,
+      rgb(from var(--color-orange) r g b / 0.08) 58%,
+      rgb(from var(--color-orange) r g b / 0.04) 72%,
+      rgb(from var(--color-orange) r g b / 0.015) 84%,
+      transparent 100%
+    );
+
+
   /* Typography */
   --font-cambay: "Cambay", sans-serif;
   --font-cal-sans: 'Cal Sans', sans-serif;

@@ -36,7 +36,6 @@ export class Navbar implements OnInit, AfterViewInit {
     private platformId: Object,
     private cdr: ChangeDetectorRef
   ) {
-    // Initialize viewport check in constructor BEFORE template renders
     if (isPlatformBrowser(this.platformId)) {
       this.isCompact.set(window.innerWidth < 900);
     }
@@ -46,7 +45,7 @@ export class Navbar implements OnInit, AfterViewInit {
 
   navLinks = NAV_LINKS;
 
-  logo = 'assets/jnb_logo.png';
+  logo = 'assets/jnb_favicon.png';
 
   isScrolled = signal(false);
 
@@ -56,11 +55,10 @@ export class Navbar implements OnInit, AfterViewInit {
 
   navbarHidden = signal(false);
 
-  themeIcon = signal<string>('');
+  // themeIcon = signal<string>('');
 
   isCompact = signal(false);
 
-  theme = signal<'light' | 'dark'>('light');
 
   private lastScrollY = 0;
 
@@ -83,16 +81,16 @@ export class Navbar implements OnInit, AfterViewInit {
     if (!isPlatformBrowser(this.platformId))
       return;
 
-    this.checkViewport();
+    // this.checkViewport();
 
-    const savedTheme =
-      localStorage.getItem('theme') as
-      'light' | 'dark' | null;
+    // const savedTheme =
+    //   localStorage.getItem('theme') as
+    //   'light' | 'dark' | null;
 
-    const initialTheme =
-       savedTheme ?? 'light';
+    // const initialTheme =
+      //  savedTheme ?? 'light';
 
-    this.applyTheme(initialTheme);
+    // this.applyTheme(initialTheme);
 
   }
 
@@ -272,45 +270,45 @@ ngAfterViewInit(): void {
   }
 
 
-  toggleTheme(): void {
+  // toggleTheme(): void {
 
-    const next =
-      this.theme() === 'dark'
-        ? 'light'
-        : 'dark';
+  //   const next =
+  //     this.theme() === 'dark'
+  //       ? 'light'
+  //       : 'dark';
 
-    this.applyTheme(next);
+  //   this.applyTheme(next);
 
-  }
+  // }
 
-  private applyTheme(
-    theme: 'light' | 'dark'
-  ): void {
+  // private applyTheme(
+  //   theme: 'light' | 'dark'
+  // ): void {
 
-    this.theme.set(theme);
+  //   this.theme.set(theme);
 
-    document.documentElement.setAttribute(
-      'data-theme',
-      theme
-    );
+  //   document.documentElement.setAttribute(
+  //     'data-theme',
+  //     theme
+  //   );
 
-    localStorage.setItem(
-      'theme',
-      theme
-    );
+  //   localStorage.setItem(
+  //     'theme',
+  //     theme
+  //   );
 
-    this.setLogo(theme);
+  //   this.setLogo(theme);
 
-  }
+  // }
 
-  setLogo(theme: string): void {
+  // setLogo(theme: string): void {
 
-    this.logo =
-      theme === 'dark'
-        ? 'assets/jnb_favicon.png'
-        : 'assets/jnb_logo.png';
+  //   this.logo =
+  //     theme === 'dark'
+  //       ? 'assets/jnb_favicon.png'
+  //       : 'assets/jnb_logo.png';
 
-  }
+  // }
 
   scrollTo(anchor: string): void {
 

@@ -6,11 +6,11 @@
 
     <div class="flex">
         <div class="left">
-            <div class="topp">
-                SHORT
-            </div>
-            <div class="paragraph">
-                Can do full stack development and  UI/UX design.
+            <div class="link-wrapper">
+                <div class="topp">Know in depth</div>
+                <button class="resume-btn" (click)="openResume()">
+                    Resume
+                </button>
             </div>
             <div class="link-wrapper">
                 <div class="topp">Get in touch</div>
@@ -29,29 +29,17 @@
         </div>
         <div class="right">
             <div class="topp">
+                SHORT
+            </div>
+            <div class="paragraph short">
+                Can do full stack development and  UI/UX design.
+            </div>
+            <div class="topp">
                 LONG
             </div>
             <p class="paragraph">
-                I’m a full-stack developer building web applications using technologies like <strong>Spring Boot</strong>, and <strong>Angular</strong>. I can work from <strong>UI/UX</strong> designing to developing backend services.
+                I’m a full-stack developer building web applications using technologies like <strong>Spring Boot</strong>, and <strong>Angular</strong>. I can work from <strong>UI/UX</strong> designing to developing backend services. I also have experience in database management, <strong>cloud deployment</strong>, and <strong>agile practices</strong>. 
             </p>
-            <p class="paragraph">
-                I also have experience in database management, <strong>cloud deployment</strong>, and <strong>agile practices</strong>. 
-            </p>
-
-            <div class="link-wrapper2">
-                <div class="topp">Get in touch</div>
-                <div class="links">
-                    <a [href]="owner.linkedin" target="_blank" rel="noopener" class="link"><i class="fa-brands fa-square-linkedin"></i></a>
-                    <a [href]="owner.github" target="_blank" rel="noopener" class="link"><i class="fa-brands fa-github"></i></a>
-                    <button class="link" (click)="copyEmail()">
-                        <i class="fa-solid fa-envelope"></i>
-                    </button>
-
-                    <button class="link" (click)="copyPhone()">
-                        <i class="fa-solid fa-phone"></i>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 </section>
