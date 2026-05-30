@@ -107,6 +107,35 @@ export class Myprojects implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  // ─── Custom cursor handlers ───────────────────────
+
+  onImgEnter(e: MouseEvent): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const img = e.currentTarget as HTMLElement;
+    const cursor = img.querySelector('.project-cursor') as HTMLElement;
+    if (!cursor) return;
+    cursor.classList.add('visible');
+  }
+
+  onImgLeave(e: MouseEvent): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const img = e.currentTarget as HTMLElement;
+    const cursor = img.querySelector('.project-cursor') as HTMLElement;
+    if (!cursor) return;
+    cursor.classList.remove('visible');
+  }
+
+  onImgMove(e: MouseEvent): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const img = e.currentTarget as HTMLElement;
+    const cursor = img.querySelector('.project-cursor') as HTMLElement;
+    if (!cursor) return;
+    const rect = img.getBoundingClientRect();
+    cursor.style.left = `${e.clientX - rect.left}px`;
+    cursor.style.top  = `${e.clientY - rect.top}px`;
+  }
+
+  // ─────────────────────────────────────────────────
 
   private killMarquees(): void {
 

@@ -7,7 +7,21 @@
     <div class="projects-container" [class.list-view]="showAll">
         @for (project of displayedProjects; track project.id) {
             <div class="project-item">
-                <div [routerLink]="['/projects', project.id]" class="project-img">
+                <div
+                    [routerLink]="['/projects', project.id]"
+                    class="project-img"
+                    (mouseenter)="onImgEnter($event)"
+                    (mouseleave)="onImgLeave($event)"
+                    (mousemove)="onImgMove($event)"
+                >
+                    <div class="project-cursor">
+                        <span class="cursor-marquee">
+                            <span>View project</span><span>·</span>
+                            <span>View project</span><span>·</span>
+                            <span>View project</span><span>·</span>
+                            <span>View project</span><span>·</span>
+                        </span>
+                    </div>
                     <img [src]="project.previewImage" decoding="async" loading="lazy" alt="project"/>
                 </div>
                 <div class="project-description">

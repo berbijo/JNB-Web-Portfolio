@@ -53,9 +53,6 @@
   }
 }
 
-/* =========================================
-   DESKTOP NAV LINKS
-   ========================================= */
 
 .navbar__links {
   display: flex;
@@ -66,16 +63,11 @@
   button {
     background: none;
     border: none;
-
     font-family: var(--font-cal-sans);
     font-weight: 500;
-
     color: var(--color-text-primary);
-
     cursor: pointer;
-
-    transition: color var(--transition-fast);
-
+    transition: var(--transition-base);
     transform: translateY(0);
 
     &:hover {
@@ -138,10 +130,6 @@
     box-shadow: 0 10px 30px rgba(229, 124, 50, .22);
   }
 }
-
-/* =========================================
-   THEME TOGGLE (minimal modern)
-   ========================================= */
 
 .theme-toggle {
   background: none;
